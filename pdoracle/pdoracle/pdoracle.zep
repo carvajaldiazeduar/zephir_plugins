@@ -4,18 +4,18 @@ namespace Pdoracle;
 /**
  * This class is subject to revision and manteinance of Phalcon team group.
  *
- * @author Julián Arturo Molina Castiblanco <jualien@misena.edu.co> - <jmolinac5116@correo.ean.edu.co>
- * @version 1.0 June 25 2014 By Julián Molina
+ * @author Julian Arturo Molina Castiblanco <jualien@misena.edu.co> - <jmolinac5116@correo.ean.edu.co>
+ * @version 1.0 June 25 2014 By Julian Molina
  * @copyright This library is free for everybody long as you put the author on all derivations that you will do
  * @licence Open Source
  *
  */
-class Pdoracle extends \PDO {
+class PDOracle extends \PDO {
 
     /**
      *
      */
-    private _connection;
+    private static _connection;
 
     /**
      *
@@ -28,9 +28,20 @@ class Pdoracle extends \PDO {
      * @param String password
      * @param String server
      * @param Array optional
-     * @return Boolean
+     * @return PDOracle
      */
-    public function __construct (string dsn, string username, string password , var options = ""){
+    public function __construct (string dns, string username, string password , var options = ""){
+
+        if is_null(self::_connection) {
+
+            var connection;
+            let connection = new Connection();
+
+            let connection::dns = dns;
+            let connection::usr = username;
+            let connection::password = password;
+            let self::_connection = connection::getInstance();
+        }
 
     }
 
