@@ -38,9 +38,9 @@
         "check-invalid-reads": false
     },
     "namespace": "pdoracle",
-    "name": "pdoracle",
-    "description": "",
-    "author": "",
-    "version": "0.0.1",
+    "name": "PDO OCI8 ORACLE",
+    "description": "PDO Extension using oci8 - Based to PDO Mysql extension and oci8.",
+    "author": "Julián Arturo Molina Castiblanco",
+    "version": "0.0.1 Beta",
     "verbose": false
 }

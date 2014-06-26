@@ -24,7 +24,9 @@
 #include "kernel/fcall.h"
 #include "kernel/memory.h"
 
+zend_class_entry *pdoracle_engine_ce;
 zend_class_entry *pdoracle_pdoracle_ce;
+zend_class_entry *pdoracle_pdoraclestatement_ce;
 
 ZEND_DECLARE_MODULE_GLOBALS(pdoracle)
 
@@ -190,6 +192,8 @@ static PHP_MINIT_FUNCTION(pdoracle)
 	setlocale(LC_ALL, "C");
 #endif
 
+	ZEPHIR_INIT(Pdoracle_Engine);
+	ZEPHIR_INIT(Pdoracle_PDOracleStatement);
 	ZEPHIR_INIT(Pdoracle_Pdoracle);
 
 #if PHP_VERSION_ID < 50500
