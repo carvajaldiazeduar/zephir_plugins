@@ -93,8 +93,8 @@ PHP_METHOD(Pdoracle_Connection, getPassword) {
 }
 
 /**
- * Singleton Pattern to connection PDOracle
- * return OCI_CONNECT Instance
+ * Singleton Pattern to connection PDOracle.
+ * @return oci_connect Instance
  */
 PHP_METHOD(Pdoracle_Connection, getInstance) {
 
@@ -147,11 +147,25 @@ PHP_METHOD(Pdoracle_Connection, __clone) {
 }
 
 /**
- *
+ * Check wheter connection is ok or is null.
+ * @return Boolean
  */
 PHP_METHOD(Pdoracle_Connection, closeConnection) {
 
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *_0 = NULL, *_1;
 
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_INIT_VAR(_0);
+	if ((0 == 0)) {
+		_1 = zephir_fetch_static_property_ce(pdoracle_connection_ce, SL("_instance") TSRMLS_CC);
+		ZEPHIR_CALL_FUNCTION(&_0, "oci_close", NULL, _1);
+		zephir_check_call_status();
+	} else {
+		ZVAL_BOOL(_0, 1);
+	}
+	RETURN_CCTOR(_0);
 
 }
 

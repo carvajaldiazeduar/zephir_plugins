@@ -25,7 +25,7 @@
 #include "kernel/memory.h"
 
 zend_class_entry *pdoracle_connection_ce;
-zend_class_entry *pdoracle_engine_ce;
+zend_class_entry *pdoracle_enginesql_ce;
 zend_class_entry *pdoracle_pdoracle_ce;
 zend_class_entry *pdoracle_pdoracleexception_ce;
 zend_class_entry *pdoracle_pdoraclestatement_ce;
@@ -195,7 +195,7 @@ static PHP_MINIT_FUNCTION(pdoracle)
 #endif
 
 	ZEPHIR_INIT(Pdoracle_Connection);
-	ZEPHIR_INIT(Pdoracle_Engine);
+	ZEPHIR_INIT(Pdoracle_EngineSQL);
 	ZEPHIR_INIT(Pdoracle_PDOracle);
 	ZEPHIR_INIT(Pdoracle_PDOracleException);
 	ZEPHIR_INIT(Pdoracle_PDOracleStatement);

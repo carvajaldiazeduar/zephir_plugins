@@ -44,7 +44,7 @@
           'type' => 'property',
           'name' => '_connection',
           'docblock' => '**
-     *
+     * 
      *',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Pdoracle.zep',
           'line' => 22,

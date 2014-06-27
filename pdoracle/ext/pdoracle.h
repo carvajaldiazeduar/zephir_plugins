@@ -5,9 +5,9 @@
 #define ZEPHIR_CLASS_ENTRIES_H
 
 #include "pdoracle/connection.zep.h"
+#include "pdoracle/enginesql.zep.h"
 #include "pdoracle/pdoracleexception.zep.h"
 #include "pdoracle/pdoraclestatement.zep.h"
 #include "pdoracle/pdoracle.zep.h"
-#include "pdoracle/engine.zep.h"
 
 #endif

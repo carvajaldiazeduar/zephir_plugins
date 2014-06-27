@@ -13,7 +13,7 @@ namespace Pdoracle;
 class PDOracle extends \PDO {
 
     /**
-     *
+     * 
      */
     private static _connection;
 

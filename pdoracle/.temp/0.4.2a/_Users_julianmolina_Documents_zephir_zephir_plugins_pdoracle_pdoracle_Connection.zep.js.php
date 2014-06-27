@@ -618,8 +618,8 @@
             ),
           ),
           'docblock' => '**
-     * Singleton Pattern to connection PDOracle
-     * return OCI_CONNECT Instance
+     * Singleton Pattern to connection PDOracle.
+     * @return oci_connect Instance
      *',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
           'line' => 60,
@@ -634,7 +634,7 @@
           'type' => 'method',
           'name' => '__clone',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
-          'line' => 66,
+          'line' => 67,
           'char' => 6,
         ),
         2 => 
@@ -642,23 +642,148 @@
           'visibility' => 
           array (
             0 => 'public',
+            1 => 'static',
           ),
           'type' => 'method',
           'name' => 'closeConnection',
+          'statements' => 
+          array (
+            0 => 
+            array (
+              'type' => 'return',
+              'expr' => 
+              array (
+                'type' => 'ternary',
+                'left' => 
+                array (
+                  'type' => 'isset',
+                  'left' => 
+                  array (
+                    'type' => 'list',
+                    'left' => 
+                    array (
+                      'type' => 'static-property-access',
+                      'left' => 
+                      array (
+                        'type' => 'variable',
+                        'value' => 'self',
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                        'line' => 69,
+                        'char' => 38,
+                      ),
+                      'right' => 
+                      array (
+                        'type' => 'variable',
+                        'value' => '_instance',
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                        'line' => 69,
+                        'char' => 38,
+                      ),
+                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                      'line' => 69,
+                      'char' => 38,
+                    ),
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                    'line' => 69,
+                    'char' => 40,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                  'line' => 69,
+                  'char' => 40,
+                ),
+                'right' => 
+                array (
+                  'type' => 'fcall',
+                  'name' => 'oci_close',
+                  'call-type' => 1,
+                  'parameters' => 
+                  array (
+                    0 => 
+                    array (
+                      'parameter' => 
+                      array (
+                        'type' => 'static-property-access',
+                        'left' => 
+                        array (
+                          'type' => 'variable',
+                          'value' => 'self',
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                          'line' => 69,
+                          'char' => 67,
+                        ),
+                        'right' => 
+                        array (
+                          'type' => 'variable',
+                          'value' => '_instance',
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                          'line' => 69,
+                          'char' => 67,
+                        ),
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                        'line' => 69,
+                        'char' => 67,
+                      ),
+                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                      'line' => 69,
+                      'char' => 67,
+                    ),
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                  'line' => 69,
+                  'char' => 69,
+                ),
+                'extra' => 
+                array (
+                  'type' => 'bool',
+                  'value' => 'true',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                  'line' => 69,
+                  'char' => 76,
+                ),
+                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                'line' => 69,
+                'char' => 76,
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+              'line' => 70,
+              'char' => 3,
+            ),
+          ),
           'docblock' => '**
-     *
+     * Check wheter connection is ok or is null.
+     * @return Boolean
      *',
+          'return-type' => 
+          array (
+            'type' => 'return-type',
+            'list' => 
+            array (
+              0 => 
+              array (
+                'type' => 'return-type-parameter',
+                'data-type' => 'bool',
+                'mandatory' => 0,
+                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+                'line' => 68,
+                'char' => 58,
+              ),
+            ),
+            'void' => 0,
+            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
+            'line' => 68,
+            'char' => 58,
+          ),
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
-          'line' => 70,
+          'line' => 71,
           'char' => 1,
         ),
       ),
       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
-      'line' => 70,
+      'line' => 71,
       'char' => 1,
     ),
     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/Connection.zep',
-    'line' => 71,
+    'line' => 72,
     'char' => 0,
   ),
 );

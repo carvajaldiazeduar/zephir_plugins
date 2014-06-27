@@ -11,7 +11,7 @@
 #define PHP_PDORACLE_NAME        "PDO OCI8 ORACLE"
 #define PHP_PDORACLE_VERSION     "0.0.1 Beta"
 #define PHP_PDORACLE_EXTNAME     "pdoracle"
-#define PHP_PDORACLE_AUTHOR      "Julián Arturo Molina Castiblanco"
+#define PHP_PDORACLE_AUTHOR      "Julian Arturo Molina Castiblanco"
 #define PHP_PDORACLE_ZEPVERSION  "0.4.2a"
 #define PHP_PDORACLE_DESCRIPTION "PDO Extension using oci8 - Based to PDO Mysql extension and oci8."
 

@@ -33,7 +33,7 @@ ZEPHIR_INIT_CLASS(Pdoracle_PDOracle) {
 	ZEPHIR_REGISTER_CLASS_EX(Pdoracle, PDOracle, pdoracle, pdoracle, php_pdo_get_dbh_ce(), pdoracle_pdoracle_method_entry, 0);
 
 	/**
-	 *
+	 * 
 	 */
 	zend_declare_property_null(pdoracle_pdoracle_ce, SL("_connection"), ZEND_ACC_PRIVATE|ZEND_ACC_STATIC TSRMLS_CC);
 

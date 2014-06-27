@@ -36,8 +36,8 @@ final class Connection {
     private static _instance;
 
     /**
-     * Singleton Pattern to connection PDOracle
-     * return OCI_CONNECT Instance
+     * Singleton Pattern to connection PDOracle.
+     * @return oci_connect Instance
      */
      public static function getInstance() {
          if isset(self::_instance) {
@@ -62,9 +62,10 @@ final class Connection {
      }
 
     /**
-     *
+     * Check wheter connection is ok or is null.
+     * @return Boolean
      */
-     public function closeConnection(){
-
-     }
+     public static function closeConnection() -> boolean {
+         return isset(self::_instance) ? oci_close(self::_instance) : true ;
+	 }
 }
