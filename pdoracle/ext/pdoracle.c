@@ -194,9 +194,9 @@ static PHP_MINIT_FUNCTION(pdoracle)
 	setlocale(LC_ALL, "C");
 #endif
 
+	ZEPHIR_INIT(PDOracle_PDOracle);
 	ZEPHIR_INIT(Pdoracle_Connection);
 	ZEPHIR_INIT(Pdoracle_EngineSQL);
-	ZEPHIR_INIT(Pdoracle_PDOracle);
 	ZEPHIR_INIT(Pdoracle_PDOracleException);
 	ZEPHIR_INIT(Pdoracle_PDOracleStatement);
 

@@ -28,12 +28,12 @@
  * @licence Open Source
  *
  */
-ZEPHIR_INIT_CLASS(Pdoracle_PDOracle) {
+ZEPHIR_INIT_CLASS(PDOracle_PDOracle) {
 
-	ZEPHIR_REGISTER_CLASS_EX(Pdoracle, PDOracle, pdoracle, pdoracle, php_pdo_get_dbh_ce(), pdoracle_pdoracle_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS_EX(PDOracle, PDOracle, pdoracle, pdoracle, php_pdo_get_dbh_ce(), pdoracle_pdoracle_method_entry, 0);
 
 	/**
-	 * 
+	 *
 	 */
 	zend_declare_property_null(pdoracle_pdoracle_ce, SL("_connection"), ZEND_ACC_PRIVATE|ZEND_ACC_STATIC TSRMLS_CC);
 
@@ -54,7 +54,7 @@ ZEPHIR_INIT_CLASS(Pdoracle_PDOracle) {
  * @param Array optional
  * @return PDOracle
  */
-PHP_METHOD(Pdoracle_PDOracle, __construct) {
+PHP_METHOD(PDOracle_PDOracle, __construct) {
 
 	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
@@ -95,9 +95,10 @@ PHP_METHOD(Pdoracle_PDOracle, __construct) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, prepare) {
+PHP_METHOD(PDOracle_PDOracle, prepare) {
 
-	zval *statement_param = NULL, *driver_options = NULL;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *statement_param = NULL, *driver_options = NULL, *pdoracleStatement, *_0;
 	zval *statement = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -110,13 +111,23 @@ PHP_METHOD(Pdoracle_PDOracle, prepare) {
 	}
 
 
+	ZEPHIR_INIT_VAR(pdoracleStatement);
+	object_init_ex(pdoracleStatement, pdoracle_pdoraclestatement_ce);
+	if (zephir_has_constructor(pdoracleStatement TSRMLS_CC)) {
+		ZEPHIR_CALL_METHOD(NULL, pdoracleStatement, "__construct", NULL);
+		zephir_check_call_status();
+	}
+	zephir_update_property_zval(pdoracleStatement, SL("_queryString"), statement TSRMLS_CC);
+	zephir_read_static_property_ce(&_0, pdoracle_pdoracle_ce, SL("_connection") TSRMLS_CC);
+	zephir_update_property_zval(pdoracleStatement, SL("_connection"), _0 TSRMLS_CC);
+	RETURN_CCTOR(pdoracleStatement);
 
 }
 
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, query) {
+PHP_METHOD(PDOracle_PDOracle, query) {
 
 	zval *statement_param = NULL;
 	zval *statement = NULL;
@@ -133,7 +144,7 @@ PHP_METHOD(Pdoracle_PDOracle, query) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, beginTransaction) {
+PHP_METHOD(PDOracle_PDOracle, beginTransaction) {
 
 
 
@@ -142,7 +153,7 @@ PHP_METHOD(Pdoracle_PDOracle, beginTransaction) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, commit) {
+PHP_METHOD(PDOracle_PDOracle, commit) {
 
 
 
@@ -151,7 +162,7 @@ PHP_METHOD(Pdoracle_PDOracle, commit) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, errorCode) {
+PHP_METHOD(PDOracle_PDOracle, errorCode) {
 
 
 
@@ -160,7 +171,7 @@ PHP_METHOD(Pdoracle_PDOracle, errorCode) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, errorInfo) {
+PHP_METHOD(PDOracle_PDOracle, errorInfo) {
 
 
 
@@ -169,7 +180,7 @@ PHP_METHOD(Pdoracle_PDOracle, errorInfo) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, exec) {
+PHP_METHOD(PDOracle_PDOracle, exec) {
 
 	zval *statement_param = NULL;
 	zval *statement = NULL;
@@ -186,7 +197,7 @@ PHP_METHOD(Pdoracle_PDOracle, exec) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, getAttribute) {
+PHP_METHOD(PDOracle_PDOracle, getAttribute) {
 
 	zval *attribute_param = NULL;
 	int attribute;
@@ -202,7 +213,7 @@ PHP_METHOD(Pdoracle_PDOracle, getAttribute) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, getAvailableDrivers) {
+PHP_METHOD(PDOracle_PDOracle, getAvailableDrivers) {
 
 
 
@@ -211,7 +222,7 @@ PHP_METHOD(Pdoracle_PDOracle, getAvailableDrivers) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, inTransaction) {
+PHP_METHOD(PDOracle_PDOracle, inTransaction) {
 
 
 
@@ -220,7 +231,7 @@ PHP_METHOD(Pdoracle_PDOracle, inTransaction) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, lastInsertId) {
+PHP_METHOD(PDOracle_PDOracle, lastInsertId) {
 
 	zval *name_param = NULL;
 	zval *name = NULL;
@@ -244,7 +255,7 @@ PHP_METHOD(Pdoracle_PDOracle, lastInsertId) {
  * @param String string_param
  * @param Integer parameter_type PDO::PARAM_STR
  */
-PHP_METHOD(Pdoracle_PDOracle, quote) {
+PHP_METHOD(PDOracle_PDOracle, quote) {
 
 	int parameter_type;
 	zval *string_param_param = NULL, *parameter_type_param = NULL;
@@ -267,7 +278,7 @@ PHP_METHOD(Pdoracle_PDOracle, quote) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, rollBack) {
+PHP_METHOD(PDOracle_PDOracle, rollBack) {
 
 
 
@@ -276,7 +287,7 @@ PHP_METHOD(Pdoracle_PDOracle, rollBack) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_PDOracle, setAttribute) {
+PHP_METHOD(PDOracle_PDOracle, setAttribute) {
 
 	zval *attribute_param = NULL, *value;
 	int attribute;

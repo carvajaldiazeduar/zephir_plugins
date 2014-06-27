@@ -15,8 +15,9 @@
 #include "kernel/object.h"
 #include "kernel/memory.h"
 #include "kernel/operators.h"
-#include "kernel/fcall.h"
 #include "kernel/concat.h"
+#include "kernel/string.h"
+#include "kernel/fcall.h"
 #include "kernel/array.h"
 
 
@@ -66,75 +67,15 @@ PHP_METHOD(Pdoracle_EngineSQL, getOciConnection) {
 /**
  *
  */
-PHP_METHOD(Pdoracle_EngineSQL, executeQuery) {
-
-	zval *query_param = NULL;
-	zval *query = NULL;
-
-	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &query_param);
-
-	zephir_get_strval(query, query_param);
-
-
-
-}
-
-/**
- *
- */
-PHP_METHOD(Pdoracle_EngineSQL, executeUpdate) {
-
-
-
-}
-
-/**
- *
- */
-PHP_METHOD(Pdoracle_EngineSQL, prepareStatement) {
-
-	zephir_nts_static zephir_fcall_cache_entry *_0 = NULL, *_1 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *query_param = NULL, *params, *type_param = NULL, *preparedQuery = NULL;
-	zval *query = NULL, *type = NULL;
-
-	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 2, 1, &query_param, &params, &type_param);
-
-	zephir_get_strval(query, query_param);
-	if (!type_param) {
-		ZEPHIR_INIT_VAR(type);
-		ZVAL_STRING(type, "symbol", 1);
-	} else {
-		zephir_get_strval(type, type_param);
-	}
-
-
-	if (ZEPHIR_IS_STRING(type, "symbol")) {
-		ZEPHIR_CALL_METHOD(&preparedQuery, this_ptr, "_prepareinterrogation", &_0, query, params);
-		zephir_check_call_status();
-	}
-	if (ZEPHIR_IS_STRING(type, "bind")) {
-		ZEPHIR_CALL_METHOD(&preparedQuery, this_ptr, "_preparebindstatement", &_1, query, params);
-		zephir_check_call_status();
-	}
-	RETURN_CCTOR(preparedQuery);
-
-}
-
-/**
- *
- */
 PHP_METHOD(Pdoracle_EngineSQL, _prepareInterrogation) {
 
-	zephir_fcall_cache_entry *_8 = NULL;
-	zephir_nts_static zephir_fcall_cache_entry *_7 = NULL;
-	long _0, _3;
+	zephir_fcall_cache_entry *_7 = NULL;
+	zephir_nts_static zephir_fcall_cache_entry *_6 = NULL;
+	long _0, _4;
 	int i = 0, j = 0, ZEPHIR_LAST_CALL_STATUS;
 	char charField;
-	zval *query_param = NULL, *params, _1 = zval_used_for_init, *_4, *_5 = NULL, *_6;
-	zval *query = NULL, *queryBindConstruct = NULL, *_2 = NULL;
+	zval *query_param = NULL, *params, *ociParse = NULL, _1 = zval_used_for_init, *_3, *paramValue = NULL, *_5;
+	zval *query = NULL, *queryBindConstruct = NULL, *_2 = NULL, *addChar = NULL, *bindParam = NULL;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &query_param, &params);
@@ -153,27 +94,36 @@ PHP_METHOD(Pdoracle_EngineSQL, _prepareInterrogation) {
 			ZEPHIR_CONCAT_VSV(_2, queryBindConstruct, " :param", &_1);
 			ZEPHIR_CPY_WRT(queryBindConstruct, _2);
 			i++;
+		} else {
+			ZEPHIR_INIT_NVAR(addChar);
+			Z_STRLEN_P(addChar) = zephir_spprintf(&Z_STRVAL_P(addChar), 0, "%c", charField);
+			Z_TYPE_P(addChar) = IS_STRING;
+			ZEPHIR_INIT_LNVAR(_2);
+			ZEPHIR_CONCAT_VV(_2, queryBindConstruct, addChar);
+			ZEPHIR_CPY_WRT(queryBindConstruct, _2);
 		}
 	}
-	for (_3 = 0; _3 < Z_STRLEN_P(query); _3++) {
-		charField = ZEPHIR_STRING_OFFSET(query, _3);
+	_3 = zephir_fetch_nproperty_this(this_ptr, SL("_ociConnection"), PH_NOISY_CC);
+	ZEPHIR_CALL_FUNCTION(&ociParse, "oci_parse", NULL, _3, queryBindConstruct);
+	zephir_check_call_status();
+	for (_4 = 0; _4 < Z_STRLEN_P(query); _4++) {
+		charField = ZEPHIR_STRING_OFFSET(query, _4);
 		if (charField == '?') {
-			_4 = zephir_fetch_nproperty_this(this_ptr, SL("_ociConnection"), PH_NOISY_CC);
 			ZEPHIR_SINIT_NVAR(_1);
 			ZVAL_LONG(&_1, j);
-			ZEPHIR_INIT_LNVAR(_2);
-			ZEPHIR_CONCAT_SV(_2, " :param", &_1);
-			zephir_array_fetch_long(&_6, params, j, PH_NOISY | PH_READONLY TSRMLS_CC);
-			ZEPHIR_CALL_METHOD(&_5, this_ptr, "_escapestring", &_7, _6);
+			ZEPHIR_INIT_NVAR(bindParam);
+			ZEPHIR_CONCAT_SV(bindParam, ":param", &_1);
+			zephir_array_fetch_long(&_5, params, j, PH_NOISY | PH_READONLY TSRMLS_CC);
+			ZEPHIR_CALL_METHOD(&paramValue, this_ptr, "_escapestring", &_6, _5);
 			zephir_check_call_status();
-			Z_SET_ISREF_P(_5);
-			ZEPHIR_CALL_FUNCTION(NULL, "oci_bind_by_name", &_8, _4, _2, _5);
-			Z_UNSET_ISREF_P(_5);
+			Z_SET_ISREF_P(paramValue);
+			ZEPHIR_CALL_FUNCTION(NULL, "oci_bind_by_name", &_7, ociParse, bindParam, paramValue);
+			Z_UNSET_ISREF_P(paramValue);
 			zephir_check_call_status();
 			j++;
 		}
 	}
-	ZEPHIR_MM_RESTORE();
+	RETURN_CCTOR(ociParse);
 
 }
 

@@ -1,5 +1,5 @@
 
-namespace Pdoracle;
+namespace PDOracle;
 
 /**
  * This class is subject to revision and manteinance of Phalcon team group.
@@ -13,7 +13,7 @@ namespace Pdoracle;
 class PDOracle extends \PDO {
 
     /**
-     * 
+     *
      */
     private static _connection;
 
@@ -49,6 +49,13 @@ class PDOracle extends \PDO {
      *
      */
     public function prepare (string statement , var driver_options = "") -> <PDOracleStatement> {
+
+        var pdoracleStatement;
+        let pdoracleStatement = new PDOracleStatement();
+        let pdoracleStatement->_queryString = statement;
+        let pdoracleStatement->_connection = self::_connection;
+
+        return pdoracleStatement;
 
     }
 

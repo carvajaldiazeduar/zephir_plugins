@@ -4,12 +4,37 @@ namespace Pdoracle;
 /**
  *
  */
-class PDOracleStatement extends \PDOStatement {
+class PDOracleStatement {
 
     /**
      *
      */
-    private string _queryString{get, set};
+    private _queryString{get, set};
+
+    /**
+     *
+     */
+    private _connection;
+
+    /**
+     *
+     */
+    public function execute (var inputParameters = "") -> boolean {
+
+        var prepareSQL, parseSQL;
+        let prepareSQL = new EngineSQL();
+        let prepareSQL->_ociConnection = this->_connection;
+        let parseSQL = prepareSQL->_prepareInterrogation(this->_queryString, inputParameters);
+        return oci_execute(parseSQL);
+
+    }
+
+    /**
+     *
+     */
+    public function $fetch (int fetchStyle , int cursorOrientation = 0, int cursorOffset = 0){
+
+    }
 
     /**
      *
@@ -21,14 +46,14 @@ class PDOracleStatement extends \PDOStatement {
     /**
      *
      */
-    public function bindParam (var parameter , var variable, int data_type = \PDO::PARAM_STR, int length, var driver_options) -> boolean {
+    public function bindParam (var parameter , var variable, int data_type = 0, int length, var driver_options) -> boolean {
 
     }
 
     /**
      *
      */
-    public function bindValue (var parameter, var value, int data_type = \PDO::PARAM_STR) -> boolean {
+    public function bindValue (var parameter, var value, int data_type = 0) -> boolean {
 
     }
 
@@ -70,20 +95,6 @@ class PDOracleStatement extends \PDOStatement {
     /**
      *
      */
-    public function execute (var input_parameters) -> boolean {
-
-    }
-
-    /**
-     *
-     */
-    public function fetch (int fetch_style , int cursor_orientation = \PDO::FETCH_ORI_NEXT, int cursor_offset = 0){
-
-    }
-
-    /**
-     *
-     */
     public function fetchAll (int fetch_style, var etch_argument, var ctor_args = ""){
 
     }
@@ -91,7 +102,7 @@ class PDOracleStatement extends \PDOStatement {
     /**
      *
      */
-    public function fetchColumn (int column_number = 0 ] ) -> string {
+    public function fetchColumn (int column_number = 0) -> string {
 
     }
 
@@ -133,7 +144,7 @@ class PDOracleStatement extends \PDOStatement {
     /**
      *
      */
-    public function setAttribute (int attribute , mixed $value ) -> boolean {
+    public function setAttribute (int attribute , var value ) -> boolean {
 
     }
 

@@ -11,48 +11,15 @@ class EngineSQL {
     /**
      *
      */
-    private _ociConnection{set,get};
+    private _ociConnection{set, get};
 
     /**
      *
      */
-    public static function executeQuery(string query) {
-
-    }
-
-    /**
-     *
-     */
-    public static function executeUpdate() {
-
-    }
-
-    /**
-     *
-     */
-    public function prepareStatement(string query, var params, string type = "symbol") -> string {
-
-        var preparedQuery;
-
-        if type == "symbol" {
-            let preparedQuery = this->_prepareInterrogation(query, params);
-
-        }
-
-        if type == "bind" {
-            let preparedQuery = this->_prepareBindStatement(query, params);
-        }
-
-        return preparedQuery;
-
-    }
-
-    /**
-     *
-     */
-    private function _prepareInterrogation(string query, var params){
+    public function _prepareInterrogation(string query, var params){
 
         string queryBindConstruct = "";
+        var ociParse;
         char charField;
         int i = 0;
         int j = 0;
@@ -61,24 +28,38 @@ class EngineSQL {
          * Set params to sql, becomed on well sql bind_name
          */
         for charField in query {
+
             if charField == '?' {
                 let queryBindConstruct = queryBindConstruct." :param".i;
                 let i++;
+            }else{
+                string addChar;
+                let addChar = charField;
+                let queryBindConstruct = queryBindConstruct.addChar;
             }
+
         }
 
-        var_dump(queryBindConstruct);
+        let ociParse = oci_parse(this->_ociConnection, queryBindConstruct);
 
         /**
          * Set to oci_bind_by_name
          */
+        string bindParam;
+        var paramValue;
+
         for charField in query {
             if charField == '?' {
-                oci_bind_by_name(this->_ociConnection, " :param".j, this->_escapeString(params[j]));
+
+                let bindParam = ":param".j;
+                let paramValue = this->_escapeString(params[j]);
+                oci_bind_by_name(ociParse, bindParam, paramValue);
                 let j++;
+
             }
         }
 
+        return ociParse;
 
     }
 
