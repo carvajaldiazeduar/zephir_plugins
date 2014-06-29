@@ -6,13 +6,13 @@ ZEPHIR_INIT_CLASS(PDOracle_PDOracle);
 PHP_METHOD(PDOracle_PDOracle, __construct);
 PHP_METHOD(PDOracle_PDOracle, prepare);
 PHP_METHOD(PDOracle_PDOracle, query);
+PHP_METHOD(PDOracle_PDOracle, exec);
 PHP_METHOD(PDOracle_PDOracle, beginTransaction);
 PHP_METHOD(PDOracle_PDOracle, commit);
 PHP_METHOD(PDOracle_PDOracle, rollBack);
 PHP_METHOD(PDOracle_PDOracle, inTransaction);
 PHP_METHOD(PDOracle_PDOracle, errorCode);
 PHP_METHOD(PDOracle_PDOracle, errorInfo);
-PHP_METHOD(PDOracle_PDOracle, exec);
 PHP_METHOD(PDOracle_PDOracle, getAttribute);
 PHP_METHOD(PDOracle_PDOracle, getAvailableDrivers);
 PHP_METHOD(PDOracle_PDOracle, lastInsertId);
@@ -61,13 +61,13 @@ ZEPHIR_INIT_FUNCS(pdoracle_pdoracle_method_entry) {
 	PHP_ME(PDOracle_PDOracle, __construct, arginfo_pdoracle_pdoracle___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(PDOracle_PDOracle, prepare, arginfo_pdoracle_pdoracle_prepare, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, query, arginfo_pdoracle_pdoracle_query, ZEND_ACC_PUBLIC)
+	PHP_ME(PDOracle_PDOracle, exec, arginfo_pdoracle_pdoracle_exec, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, beginTransaction, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, commit, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, rollBack, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, inTransaction, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, errorCode, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, errorInfo, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(PDOracle_PDOracle, exec, arginfo_pdoracle_pdoracle_exec, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, getAttribute, arginfo_pdoracle_pdoracle_getattribute, ZEND_ACC_PUBLIC)
 	PHP_ME(PDOracle_PDOracle, getAvailableDrivers, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	PHP_ME(PDOracle_PDOracle, lastInsertId, arginfo_pdoracle_pdoracle_lastinsertid, ZEND_ACC_PUBLIC)

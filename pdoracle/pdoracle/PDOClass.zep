@@ -97,12 +97,14 @@ class PDOClass {
     public function executeQuery(string statement){
         var ociParse;
         let ociParse = oci_parse(PDOConnection::getInstance(), statement);
-        if this->_options["transaction"] == true {
+        if isset(this->_options["transaction"]) && this->_options["transaction"] == true {
             if !oci_execute(ociParse, OCI_NO_AUTO_COMMIT) {
+                let PDOConnection::_ociParse = ociParse;
                 throw new PDOracleException();
             }
         }else{
             if !oci_execute(ociParse) {
+                let PDOConnection::_ociParse = ociParse;
                 throw new PDOracleException();
             }
         }

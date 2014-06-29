@@ -27,6 +27,7 @@ class PDOracleException extends \Exception {
                         "#iEx{".
                             "background:#F5D0A9;".
                             "width:100%;".
+                            "height:98px;".
                         "}".
 
                         ".hEx{".
@@ -39,11 +40,12 @@ class PDOracleException extends \Exception {
                    "</style>";
 
         let div .= "<div id='iEx'>".
-                        "<label class='hEx'> &nbsp; PDOracleException: </label> <span class='pEx'><i>".htmlentities(error["message"])."</i></span><br>".
+                        "<fieldset style='border-color:white; border-style: solid;'>".
+                        "<legend style='color:white; font-weight:bold;'>PDO Oracle Exception</legend>".
+                        "<label class='hEx'> &nbsp; Message: </label> <span class='pEx'><i>".htmlentities(error["message"])."</i></span><br>".
                         "<label class='hEx'> &nbsp; Statement: </label><span class='pEx'><i>".error["sqltext"]."</i></span><br>".
                         "<label class='hEx'> &nbsp; Offset: </label><span class='pEx'><i>".error["offset"]."</i></span><br>".
-                        "<label class='hEx'> &nbsp; File: </label><span class='pEx'><i>".trace[1]["file"]."</i></span><br>".
-                        "<label class='hEx'> &nbsp; Function: </label><span class='pEx'><i>".trace[1]["function"]."</i></span>".
+                        "</fieldset>".
                    "</div>";
 
         let this->message = div;

@@ -17,6 +17,7 @@
 #include "kernel/object.h"
 #include "kernel/exception.h"
 #include "kernel/operators.h"
+#include "kernel/array.h"
 
 
 /**
@@ -140,8 +141,9 @@ PHP_METHOD(PDOracle_PDOracle, prepare) {
  */
 PHP_METHOD(PDOracle_PDOracle, query) {
 
+	zval *_0;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *statement_param = NULL, *engine, *pdoracleStatement, *_0, *_1, *_2 = NULL;
+	zval *statement_param = NULL, *engine, *pdoracleStatement, *ociParse = NULL, *_1;
 	zval *statement = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -158,14 +160,54 @@ PHP_METHOD(PDOracle_PDOracle, query) {
 	object_init_ex(pdoracleStatement, pdoracle_pdoraclestatement_ce);
 	ZEPHIR_CALL_METHOD(NULL, pdoracleStatement, "__construct", NULL);
 	zephir_check_call_status();
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_checkTransaction"), PH_NOISY_CC);
-	ZEPHIR_INIT_VAR(_1);
-	ZVAL_STRING(_1, "transaction", 1);
-	zephir_update_property_array(pdoracleStatement, SL("_options"), _1, _0 TSRMLS_CC);
-	ZEPHIR_CALL_METHOD(&_2, engine, "executequery", NULL, statement);
+	ZEPHIR_INIT_VAR(_0);
+	array_init_size(_0, 2);
+	ZEPHIR_OBS_VAR(_1);
+	zephir_read_property_this(&_1, this_ptr, SL("_checkTransaction"), PH_NOISY_CC);
+	zephir_array_update_string(&_0, SL("transaction"), &_1, PH_COPY | PH_SEPARATE);
+	zephir_update_property_zval(pdoracleStatement, SL("_options"), _0 TSRMLS_CC);
+	ZEPHIR_CALL_METHOD(&ociParse, engine, "executequery", NULL, statement);
 	zephir_check_call_status();
-	zephir_update_property_zval(pdoracleStatement, SL("_ociParse"), _2 TSRMLS_CC);
+	zephir_update_property_zval(pdoracleStatement, SL("_ociParse"), ociParse TSRMLS_CC);
 	RETURN_CCTOR(pdoracleStatement);
+
+}
+
+/**
+ *
+ */
+PHP_METHOD(PDOracle_PDOracle, exec) {
+
+	zval *_0;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *statement_param = NULL, *engine, *pdoracleStatement, *ociParse = NULL, *numRows = NULL, *_1;
+	zval *statement = NULL;
+
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &statement_param);
+
+	zephir_get_strval(statement, statement_param);
+
+
+	ZEPHIR_INIT_VAR(engine);
+	object_init_ex(engine, pdoracle_pdoclass_ce);
+	ZEPHIR_CALL_METHOD(NULL, engine, "__construct", NULL);
+	zephir_check_call_status();
+	ZEPHIR_INIT_VAR(pdoracleStatement);
+	object_init_ex(pdoracleStatement, pdoracle_pdoraclestatement_ce);
+	ZEPHIR_CALL_METHOD(NULL, pdoracleStatement, "__construct", NULL);
+	zephir_check_call_status();
+	ZEPHIR_INIT_VAR(_0);
+	array_init_size(_0, 2);
+	ZEPHIR_OBS_VAR(_1);
+	zephir_read_property_this(&_1, this_ptr, SL("_checkTransaction"), PH_NOISY_CC);
+	zephir_array_update_string(&_0, SL("transaction"), &_1, PH_COPY | PH_SEPARATE);
+	zephir_update_property_zval(pdoracleStatement, SL("_options"), _0 TSRMLS_CC);
+	ZEPHIR_CALL_METHOD(&ociParse, engine, "executequery", NULL, statement);
+	zephir_check_call_status();
+	ZEPHIR_CALL_FUNCTION(&numRows, "oci_num_rows", NULL, ociParse);
+	zephir_check_call_status();
+	RETURN_MM_LONG(zephir_get_intval(numRows));
 
 }
 
@@ -211,7 +253,7 @@ PHP_METHOD(PDOracle_PDOracle, commit) {
 		object_init_ex(_3, pdoracle_pdoracleexception_ce);
 		ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_3, "pdoracle/PDOracle.zep", 102 TSRMLS_CC);
+		zephir_throw_exception_debug(_3, "pdoracle/PDOracle.zep", 118 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
@@ -261,23 +303,6 @@ PHP_METHOD(PDOracle_PDOracle, errorCode) {
  *
  */
 PHP_METHOD(PDOracle_PDOracle, errorInfo) {
-
-
-
-}
-
-/**
- *
- */
-PHP_METHOD(PDOracle_PDOracle, exec) {
-
-	zval *statement_param = NULL;
-	zval *statement = NULL;
-
-	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &statement_param);
-
-	zephir_get_strval(statement, statement_param);
 
 
 

@@ -593,6 +593,13 @@
                   'line' => 72,
                   'char' => 38,
                 ),
+                2 => 
+                array (
+                  'variable' => 'ociParse',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 72,
+                  'char' => 48,
+                ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
               'line' => 73,
@@ -661,47 +668,60 @@
               array (
                 0 => 
                 array (
-                  'assign-type' => 'object-property-array-index',
+                  'assign-type' => 'object-property',
                   'operator' => 'assign',
                   'variable' => 'pdoracleStatement',
                   'property' => '_options',
-                  'index-expr' => 
-                  array (
-                    0 => 
-                    array (
-                      'type' => 'string',
-                      'value' => 'transaction',
-                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                      'line' => 75,
-                      'char' => 54,
-                    ),
-                  ),
                   'expr' => 
                   array (
-                    'type' => 'property-access',
+                    'type' => 'array',
                     'left' => 
                     array (
-                      'type' => 'variable',
-                      'value' => 'this',
-                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                      'line' => 75,
-                      'char' => 63,
-                    ),
-                    'right' => 
-                    array (
-                      'type' => 'variable',
-                      'value' => '_checkTransaction',
-                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                      'line' => 75,
-                      'char' => 81,
+                      0 => 
+                      array (
+                        'key' => 
+                        array (
+                          'type' => 'string',
+                          'value' => 'transaction',
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                          'line' => 75,
+                          'char' => 57,
+                        ),
+                        'value' => 
+                        array (
+                          'type' => 'property-access',
+                          'left' => 
+                          array (
+                            'type' => 'variable',
+                            'value' => 'this',
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                            'line' => 75,
+                            'char' => 64,
+                          ),
+                          'right' => 
+                          array (
+                            'type' => 'variable',
+                            'value' => '_checkTransaction',
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                            'line' => 75,
+                            'char' => 82,
+                          ),
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                          'line' => 75,
+                          'char' => 82,
+                        ),
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                        'line' => 75,
+                        'char' => 82,
+                      ),
                     ),
                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
                     'line' => 75,
-                    'char' => 81,
+                    'char' => 83,
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
                   'line' => 75,
-                  'char' => 81,
+                  'char' => 83,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
@@ -715,10 +735,9 @@
               array (
                 0 => 
                 array (
-                  'assign-type' => 'object-property',
+                  'assign-type' => 'variable',
                   'operator' => 'assign',
-                  'variable' => 'pdoracleStatement',
-                  'property' => '_ociParse',
+                  'variable' => 'ociParse',
                   'expr' => 
                   array (
                     'type' => 'mcall',
@@ -728,7 +747,7 @@
                       'value' => 'engine',
                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
                       'line' => 76,
-                      'char' => 51,
+                      'char' => 31,
                     ),
                     'name' => 'executeQuery',
                     'call-type' => 1,
@@ -742,27 +761,55 @@
                           'value' => 'statement',
                           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
                           'line' => 76,
-                          'char' => 74,
+                          'char' => 54,
                         ),
                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
                         'line' => 76,
-                        'char' => 74,
+                        'char' => 54,
                       ),
                     ),
                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
                     'line' => 76,
-                    'char' => 75,
+                    'char' => 55,
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
                   'line' => 76,
-                  'char' => 75,
+                  'char' => 55,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
               'line' => 77,
-              'char' => 14,
+              'char' => 11,
             ),
             5 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'object-property',
+                  'operator' => 'assign',
+                  'variable' => 'pdoracleStatement',
+                  'property' => '_ociParse',
+                  'expr' => 
+                  array (
+                    'type' => 'variable',
+                    'value' => 'ociParse',
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                    'line' => 77,
+                    'char' => 52,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 77,
+                  'char' => 52,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 78,
+              'char' => 14,
+            ),
+            6 => 
             array (
               'type' => 'return',
               'expr' => 
@@ -770,11 +817,11 @@
                 'type' => 'variable',
                 'value' => 'pdoracleStatement',
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 77,
+                'line' => 78,
                 'char' => 33,
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 79,
+              'line' => 80,
               'char' => 5,
             ),
           ),
@@ -785,10 +832,345 @@
      * @return Array
      *',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 85,
+          'line' => 84,
           'char' => 6,
         ),
         3 => 
+        array (
+          'visibility' => 
+          array (
+            0 => 'public',
+          ),
+          'type' => 'method',
+          'name' => 'exec',
+          'parameters' => 
+          array (
+            0 => 
+            array (
+              'type' => 'parameter',
+              'name' => 'statement',
+              'const' => 0,
+              'data-type' => 'string',
+              'mandatory' => 0,
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 85,
+              'char' => 43,
+            ),
+          ),
+          'statements' => 
+          array (
+            0 => 
+            array (
+              'type' => 'declare',
+              'data-type' => 'variable',
+              'variables' => 
+              array (
+                0 => 
+                array (
+                  'variable' => 'engine',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 87,
+                  'char' => 19,
+                ),
+                1 => 
+                array (
+                  'variable' => 'pdoracleStatement',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 87,
+                  'char' => 38,
+                ),
+                2 => 
+                array (
+                  'variable' => 'ociParse',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 87,
+                  'char' => 48,
+                ),
+                3 => 
+                array (
+                  'variable' => 'numRows',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 87,
+                  'char' => 57,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 88,
+              'char' => 11,
+            ),
+            1 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'variable',
+                  'operator' => 'assign',
+                  'variable' => 'engine',
+                  'expr' => 
+                  array (
+                    'type' => 'new',
+                    'class' => 'PDOClass',
+                    'dynamic' => 0,
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                    'line' => 88,
+                    'char' => 36,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 88,
+                  'char' => 36,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 89,
+              'char' => 11,
+            ),
+            2 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'variable',
+                  'operator' => 'assign',
+                  'variable' => 'pdoracleStatement',
+                  'expr' => 
+                  array (
+                    'type' => 'new',
+                    'class' => 'PDOracleStatement',
+                    'dynamic' => 0,
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                    'line' => 89,
+                    'char' => 56,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 89,
+                  'char' => 56,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 90,
+              'char' => 11,
+            ),
+            3 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'object-property',
+                  'operator' => 'assign',
+                  'variable' => 'pdoracleStatement',
+                  'property' => '_options',
+                  'expr' => 
+                  array (
+                    'type' => 'array',
+                    'left' => 
+                    array (
+                      0 => 
+                      array (
+                        'key' => 
+                        array (
+                          'type' => 'string',
+                          'value' => 'transaction',
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                          'line' => 90,
+                          'char' => 57,
+                        ),
+                        'value' => 
+                        array (
+                          'type' => 'property-access',
+                          'left' => 
+                          array (
+                            'type' => 'variable',
+                            'value' => 'this',
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                            'line' => 90,
+                            'char' => 64,
+                          ),
+                          'right' => 
+                          array (
+                            'type' => 'variable',
+                            'value' => '_checkTransaction',
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                            'line' => 90,
+                            'char' => 82,
+                          ),
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                          'line' => 90,
+                          'char' => 82,
+                        ),
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                        'line' => 90,
+                        'char' => 82,
+                      ),
+                    ),
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                    'line' => 90,
+                    'char' => 83,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 90,
+                  'char' => 83,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 91,
+              'char' => 11,
+            ),
+            4 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'variable',
+                  'operator' => 'assign',
+                  'variable' => 'ociParse',
+                  'expr' => 
+                  array (
+                    'type' => 'mcall',
+                    'variable' => 
+                    array (
+                      'type' => 'variable',
+                      'value' => 'engine',
+                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                      'line' => 91,
+                      'char' => 31,
+                    ),
+                    'name' => 'executeQuery',
+                    'call-type' => 1,
+                    'parameters' => 
+                    array (
+                      0 => 
+                      array (
+                        'parameter' => 
+                        array (
+                          'type' => 'variable',
+                          'value' => 'statement',
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                          'line' => 91,
+                          'char' => 54,
+                        ),
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                        'line' => 91,
+                        'char' => 54,
+                      ),
+                    ),
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                    'line' => 91,
+                    'char' => 55,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 91,
+                  'char' => 55,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 92,
+              'char' => 11,
+            ),
+            5 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'variable',
+                  'operator' => 'assign',
+                  'variable' => 'numRows',
+                  'expr' => 
+                  array (
+                    'type' => 'fcall',
+                    'name' => 'oci_num_rows',
+                    'call-type' => 1,
+                    'parameters' => 
+                    array (
+                      0 => 
+                      array (
+                        'parameter' => 
+                        array (
+                          'type' => 'variable',
+                          'value' => 'ociParse',
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                          'line' => 92,
+                          'char' => 44,
+                        ),
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                        'line' => 92,
+                        'char' => 44,
+                      ),
+                    ),
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                    'line' => 92,
+                    'char' => 45,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 92,
+                  'char' => 45,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 93,
+              'char' => 14,
+            ),
+            6 => 
+            array (
+              'type' => 'return',
+              'expr' => 
+              array (
+                'type' => 'cast',
+                'left' => 'int',
+                'right' => 
+                array (
+                  'type' => 'variable',
+                  'value' => 'numRows',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                  'line' => 93,
+                  'char' => 28,
+                ),
+                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                'line' => 93,
+                'char' => 28,
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+              'line' => 95,
+              'char' => 5,
+            ),
+          ),
+          'docblock' => '**
+     *
+     *',
+          'return-type' => 
+          array (
+            'type' => 'return-type',
+            'list' => 
+            array (
+              0 => 
+              array (
+                'type' => 'return-type-parameter',
+                'data-type' => 'int',
+                'mandatory' => 0,
+                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+                'line' => 85,
+                'char' => 52,
+              ),
+            ),
+            'void' => 0,
+            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+            'line' => 85,
+            'char' => 52,
+          ),
+          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
+          'line' => 101,
+          'char' => 6,
+        ),
+        4 => 
         array (
           'visibility' => 
           array (
@@ -808,12 +1190,12 @@
                 array (
                   'variable' => '_return',
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 87,
+                  'line' => 103,
                   'char' => 20,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 88,
+              'line' => 104,
               'char' => 10,
             ),
             1 => 
@@ -827,7 +1209,7 @@
                   'type' => 'variable',
                   'value' => 'this',
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 88,
+                  'line' => 104,
                   'char' => 17,
                 ),
                 'right' => 
@@ -835,11 +1217,11 @@
                   'type' => 'variable',
                   'value' => '_checkTransaction',
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 88,
+                  'line' => 104,
                   'char' => 36,
                 ),
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 88,
+                'line' => 104,
                 'char' => 36,
               ),
               'statements' => 
@@ -859,16 +1241,16 @@
                         'type' => 'bool',
                         'value' => 'false',
                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                        'line' => 89,
+                        'line' => 105,
                         'char' => 33,
                       ),
                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                      'line' => 89,
+                      'line' => 105,
                       'char' => 33,
                     ),
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 90,
+                  'line' => 106,
                   'char' => 9,
                 ),
               ),
@@ -890,16 +1272,16 @@
                         'type' => 'bool',
                         'value' => 'true',
                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                        'line' => 91,
+                        'line' => 107,
                         'char' => 47,
                       ),
                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                      'line' => 91,
+                      'line' => 107,
                       'char' => 47,
                     ),
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 92,
+                  'line' => 108,
                   'char' => 15,
                 ),
                 1 => 
@@ -917,21 +1299,21 @@
                         'type' => 'bool',
                         'value' => 'true',
                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                        'line' => 92,
+                        'line' => 108,
                         'char' => 31,
                       ),
                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                      'line' => 92,
+                      'line' => 108,
                       'char' => 31,
                     ),
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 93,
+                  'line' => 109,
                   'char' => 9,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 94,
+              'line' => 110,
               'char' => 14,
             ),
             2 => 
@@ -942,11 +1324,11 @@
                 'type' => 'variable',
                 'value' => '_return',
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 94,
+                'line' => 110,
                 'char' => 23,
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 95,
+              'line' => 111,
               'char' => 5,
             ),
           ),
@@ -966,20 +1348,20 @@
                 'data-type' => 'bool',
                 'mandatory' => 0,
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 86,
+                'line' => 102,
                 'char' => 52,
               ),
             ),
             'void' => 0,
             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-            'line' => 86,
+            'line' => 102,
             'char' => 52,
           ),
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 99,
+          'line' => 115,
           'char' => 6,
         ),
-        4 => 
+        5 => 
         array (
           'visibility' => 
           array (
@@ -1012,20 +1394,20 @@
                         'dynamic' => 0,
                         'name' => 'getInstance',
                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                        'line' => 101,
+                        'line' => 117,
                         'char' => 45,
                       ),
                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                      'line' => 101,
+                      'line' => 117,
                       'char' => 45,
                     ),
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 101,
+                  'line' => 117,
                   'char' => 47,
                 ),
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 101,
+                'line' => 117,
                 'char' => 47,
               ),
               'statements' => 
@@ -1039,16 +1421,16 @@
                     'class' => 'PDOracleException',
                     'dynamic' => 0,
                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                    'line' => 102,
+                    'line' => 118,
                     'char' => 42,
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 103,
+                  'line' => 119,
                   'char' => 9,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 104,
+              'line' => 120,
               'char' => 14,
             ),
             1 => 
@@ -1059,11 +1441,11 @@
                 'type' => 'bool',
                 'value' => 'true',
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 104,
+                'line' => 120,
                 'char' => 20,
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 105,
+              'line' => 121,
               'char' => 5,
             ),
           ),
@@ -1081,20 +1463,20 @@
                 'data-type' => 'bool',
                 'mandatory' => 0,
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 100,
+                'line' => 116,
                 'char' => 42,
               ),
             ),
             'void' => 0,
             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-            'line' => 100,
+            'line' => 116,
             'char' => 42,
           ),
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 109,
+          'line' => 125,
           'char' => 6,
         ),
-        5 => 
+        6 => 
         array (
           'visibility' => 
           array (
@@ -1124,20 +1506,20 @@
                       'dynamic' => 0,
                       'name' => 'getInstance',
                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                      'line' => 111,
+                      'line' => 127,
                       'char' => 50,
                     ),
                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                    'line' => 111,
+                    'line' => 127,
                     'char' => 50,
                   ),
                 ),
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 111,
+                'line' => 127,
                 'char' => 51,
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 112,
+              'line' => 128,
               'char' => 5,
             ),
           ),
@@ -1155,20 +1537,20 @@
                 'data-type' => 'bool',
                 'mandatory' => 0,
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 110,
+                'line' => 126,
                 'char' => 44,
               ),
             ),
             'void' => 0,
             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-            'line' => 110,
+            'line' => 126,
             'char' => 44,
           ),
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 116,
+          'line' => 132,
           'char' => 6,
         ),
-        6 => 
+        7 => 
         array (
           'visibility' => 
           array (
@@ -1189,7 +1571,7 @@
                   'type' => 'variable',
                   'value' => 'this',
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 118,
+                  'line' => 134,
                   'char' => 21,
                 ),
                 'right' => 
@@ -1197,15 +1579,15 @@
                   'type' => 'variable',
                   'value' => '_checkTransaction',
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                  'line' => 118,
+                  'line' => 134,
                   'char' => 39,
                 ),
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 118,
+                'line' => 134,
                 'char' => 39,
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 119,
+              'line' => 135,
               'char' => 5,
             ),
           ),
@@ -1223,20 +1605,20 @@
                 'data-type' => 'bool',
                 'mandatory' => 0,
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 117,
+                'line' => 133,
                 'char' => 49,
               ),
             ),
             'void' => 0,
             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-            'line' => 117,
+            'line' => 133,
             'char' => 49,
           ),
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 123,
+          'line' => 139,
           'char' => 6,
         ),
-        7 => 
+        8 => 
         array (
           'visibility' => 
           array (
@@ -1248,10 +1630,10 @@
      *
      *',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 130,
+          'line' => 146,
           'char' => 6,
         ),
-        8 => 
+        9 => 
         array (
           'visibility' => 
           array (
@@ -1263,56 +1645,7 @@
      *
      *',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 138,
-          'char' => 6,
-        ),
-        9 => 
-        array (
-          'visibility' => 
-          array (
-            0 => 'public',
-          ),
-          'type' => 'method',
-          'name' => 'exec',
-          'parameters' => 
-          array (
-            0 => 
-            array (
-              'type' => 'parameter',
-              'name' => 'statement',
-              'const' => 0,
-              'data-type' => 'string',
-              'mandatory' => 0,
-              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 139,
-              'char' => 43,
-            ),
-          ),
-          'docblock' => '**
-     *
-     *',
-          'return-type' => 
-          array (
-            'type' => 'return-type',
-            'list' => 
-            array (
-              0 => 
-              array (
-                'type' => 'return-type-parameter',
-                'data-type' => 'int',
-                'mandatory' => 0,
-                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 139,
-                'char' => 52,
-              ),
-            ),
-            'void' => 0,
-            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-            'line' => 139,
-            'char' => 52,
-          ),
-          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 145,
+          'line' => 154,
           'char' => 6,
         ),
         10 => 
@@ -1333,7 +1666,7 @@
               'data-type' => 'int',
               'mandatory' => 0,
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 146,
+              'line' => 155,
               'char' => 48,
             ),
           ),
@@ -1341,7 +1674,7 @@
      *
      *',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 152,
+          'line' => 161,
           'char' => 6,
         ),
         11 => 
@@ -1357,7 +1690,7 @@
      *
      *',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 159,
+          'line' => 168,
           'char' => 6,
         ),
         12 => 
@@ -1381,11 +1714,11 @@
               array (
                 'type' => 'null',
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 160,
+                'line' => 169,
                 'char' => 53,
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 160,
+              'line' => 169,
               'char' => 53,
             ),
           ),
@@ -1403,17 +1736,17 @@
                 'data-type' => 'string',
                 'mandatory' => 0,
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 160,
+                'line' => 169,
                 'char' => 65,
               ),
             ),
             'void' => 0,
             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-            'line' => 160,
+            'line' => 169,
             'char' => 65,
           ),
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 168,
+          'line' => 177,
           'char' => 6,
         ),
         13 => 
@@ -1434,7 +1767,7 @@
               'data-type' => 'string',
               'mandatory' => 0,
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 169,
+              'line' => 178,
               'char' => 48,
             ),
             1 => 
@@ -1449,11 +1782,11 @@
                 'type' => 'int',
                 'value' => '0',
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 169,
+                'line' => 178,
                 'char' => 72,
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 169,
+              'line' => 178,
               'char' => 72,
             ),
           ),
@@ -1473,17 +1806,17 @@
                 'data-type' => 'string',
                 'mandatory' => 0,
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 169,
+                'line' => 178,
                 'char' => 84,
               ),
             ),
             'void' => 0,
             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-            'line' => 169,
+            'line' => 178,
             'char' => 84,
           ),
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 175,
+          'line' => 184,
           'char' => 6,
         ),
         14 => 
@@ -1504,7 +1837,7 @@
               'data-type' => 'int',
               'mandatory' => 0,
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 176,
+              'line' => 185,
               'char' => 48,
             ),
             1 => 
@@ -1515,7 +1848,7 @@
               'data-type' => 'variable',
               'mandatory' => 0,
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-              'line' => 176,
+              'line' => 185,
               'char' => 59,
             ),
           ),
@@ -1533,26 +1866,26 @@
                 'data-type' => 'bool',
                 'mandatory' => 0,
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-                'line' => 176,
+                'line' => 185,
                 'char' => 72,
               ),
             ),
             'void' => 0,
             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-            'line' => 176,
+            'line' => 185,
             'char' => 72,
           ),
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-          'line' => 179,
+          'line' => 188,
           'char' => 1,
         ),
       ),
       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-      'line' => 179,
+      'line' => 188,
       'char' => 1,
     ),
     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracle.zep',
-    'line' => 180,
+    'line' => 189,
     'char' => 0,
   ),
 );

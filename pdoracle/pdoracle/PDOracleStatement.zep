@@ -45,8 +45,7 @@ class PDOracleStatement extends PDOClass {
         let this->_ociParse = null;
         let this->_ociParse = this->_prepareInterrogation(this->_queryString, inputParameters);
         let PDOConnection::_ociParse = this->_ociParse;
-
-        if this->_options["transaction"] === true {
+        if isset(this->_options["transaction"]) && this->_options["transaction"] == true {
             let error = oci_execute(this->_ociParse, OCI_NO_AUTO_COMMIT);
         }else{
             let error = oci_execute(this->_ociParse);
@@ -68,6 +67,7 @@ class PDOracleStatement extends PDOClass {
      * @return Array OCI_FETCH_ARRAY
      */
     public function $fetch (int fetchStyle = 0, int cursorOrientation = 0, int cursorOffset = 0) {
+        //oci_free_statement(this->_ociParse);
         return oci_fetch_array(this->_ociParse);
     }
 

@@ -69,12 +69,28 @@ class PDOracle extends PDOConnection {
      */
     public function query (string statement) {
 
-        var engine, pdoracleStatement;
+        var engine, pdoracleStatement, ociParse;
         let engine = new PDOClass();
         let pdoracleStatement = new PDOracleStatement();
-        let pdoracleStatement->_options["transaction"] = this->_checkTransaction;
-        let pdoracleStatement->_ociParse = engine->executeQuery(statement);
+        let pdoracleStatement->_options = ["transaction": this->_checkTransaction];
+        let ociParse = engine->executeQuery(statement);
+        let pdoracleStatement->_ociParse = ociParse;
         return pdoracleStatement;
+
+    }
+
+    /**
+     *
+     */
+    public function exec (string statement) -> int {
+
+        var engine, pdoracleStatement, ociParse, numRows;
+        let engine = new PDOClass();
+        let pdoracleStatement = new PDOracleStatement();
+        let pdoracleStatement->_options = ["transaction": this->_checkTransaction];
+        let ociParse = engine->executeQuery(statement);
+        let numRows = oci_num_rows(ociParse);
+        return (int)numRows;
 
     }
 
@@ -131,13 +147,6 @@ class PDOracle extends PDOConnection {
     public function  errorInfo (){
 
         //return 'array';
-    }
-
-    /**
-     *
-     */
-    public function exec (string statement) -> int {
-
     }
 
     /**

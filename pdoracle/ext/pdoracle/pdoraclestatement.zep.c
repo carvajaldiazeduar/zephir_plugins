@@ -136,9 +136,10 @@ PHP_METHOD(Pdoracle_PDOracleStatement, __construc) {
  */
 PHP_METHOD(Pdoracle_PDOracleStatement, execute) {
 
-	zephir_fcall_cache_entry *_6 = NULL;
+	zephir_fcall_cache_entry *_8 = NULL;
+	zend_bool _3;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *inputParameters = NULL, *error = NULL, *_0 = NULL, *_1, *_2, *_3, *_4, _5, *_7;
+	zval *inputParameters = NULL, *error = NULL, *_0 = NULL, *_1, *_2, *_4, *_5, *_6, _7, *_9;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 1, &inputParameters);
@@ -157,24 +158,29 @@ PHP_METHOD(Pdoracle_PDOracleStatement, execute) {
 	_2 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
 	zephir_update_static_property_ce(pdoracle_pdoconnection_ce, SL("_ociParse"), _2 TSRMLS_CC);
 	_2 = zephir_fetch_nproperty_this(this_ptr, SL("_options"), PH_NOISY_CC);
-	zephir_array_fetch_string(&_3, _2, SL("transaction"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	if (ZEPHIR_IS_TRUE(_3)) {
-		_4 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
-		ZEPHIR_SINIT_VAR(_5);
-		ZVAL_LONG(&_5, 0);
-		ZEPHIR_CALL_FUNCTION(&error, "oci_execute", &_6, _4, &_5);
+	_3 = zephir_array_isset_string(_2, SS("transaction"));
+	if (_3) {
+		_4 = zephir_fetch_nproperty_this(this_ptr, SL("_options"), PH_NOISY_CC);
+		zephir_array_fetch_string(&_5, _4, SL("transaction"), PH_NOISY | PH_READONLY TSRMLS_CC);
+		_3 = ZEPHIR_IS_TRUE(_5);
+	}
+	if (_3) {
+		_6 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
+		ZEPHIR_SINIT_VAR(_7);
+		ZVAL_LONG(&_7, 0);
+		ZEPHIR_CALL_FUNCTION(&error, "oci_execute", &_8, _6, &_7);
 		zephir_check_call_status();
 	} else {
-		_4 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
-		ZEPHIR_CALL_FUNCTION(&error, "oci_execute", &_6, _4);
+		_6 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
+		ZEPHIR_CALL_FUNCTION(&error, "oci_execute", &_8, _6);
 		zephir_check_call_status();
 	}
 	if (!(zephir_is_true(error))) {
-		ZEPHIR_INIT_VAR(_7);
-		object_init_ex(_7, pdoracle_pdoracleexception_ce);
-		ZEPHIR_CALL_METHOD(NULL, _7, "__construct", NULL);
+		ZEPHIR_INIT_VAR(_9);
+		object_init_ex(_9, pdoracle_pdoracleexception_ce);
+		ZEPHIR_CALL_METHOD(NULL, _9, "__construct", NULL);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_7, "pdoracle/PDOracleStatement.zep", 56 TSRMLS_CC);
+		zephir_throw_exception_debug(_9, "pdoracle/PDOracleStatement.zep", 55 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	} else {
