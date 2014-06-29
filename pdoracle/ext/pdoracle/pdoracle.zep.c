@@ -33,12 +33,12 @@ ZEPHIR_INIT_CLASS(PDOracle_PDOracle) {
 	ZEPHIR_REGISTER_CLASS_EX(PDOracle, PDOracle, pdoracle, pdoracle, pdoracle_pdoconnection_ce, pdoracle_pdoracle_method_entry, 0);
 
 	/**
-	 *
+	 * Verify whether is actually is in a transaction.
 	 */
-	zend_declare_property_null(pdoracle_pdoracle_ce, SL("_connection"), ZEND_ACC_PRIVATE|ZEND_ACC_STATIC TSRMLS_CC);
+	zend_declare_property_null(pdoracle_pdoracle_ce, SL("_checkTransaction"), ZEND_ACC_PRIVATE TSRMLS_CC);
 
 	/**
-	 *
+	 * verify sequences to lastInsertId Method.
 	 */
 	zend_declare_property_null(pdoracle_pdoracle_ce, SL("_table_name"), ZEND_ACC_PRIVATE TSRMLS_CC);
 
@@ -48,9 +48,10 @@ ZEPHIR_INIT_CLASS(PDOracle_PDOracle) {
 
 /**
  *
- * @param String user
- * @param String password
- * @param String server
+ *
+ * @param String user oci8 user
+ * @param String password oci8 password
+ * @param String server Instance oci8
  * @param Array optional
  * @return PDOracle
  */
@@ -105,7 +106,7 @@ PHP_METHOD(PDOracle_PDOracle, __construct) {
 PHP_METHOD(PDOracle_PDOracle, prepare) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *statement_param = NULL, *driver_options = NULL, *pdoracleStatement;
+	zval *statement_param = NULL, *driver_options = NULL, *pdoracleStatement, *_0, *_1;
 	zval *statement = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -123,12 +124,16 @@ PHP_METHOD(PDOracle_PDOracle, prepare) {
 	ZEPHIR_CALL_METHOD(NULL, pdoracleStatement, "__construct", NULL);
 	zephir_check_call_status();
 	zephir_update_property_zval(pdoracleStatement, SL("_queryString"), statement TSRMLS_CC);
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_checkTransaction"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_1);
+	ZVAL_STRING(_1, "transaction", 1);
+	zephir_update_property_array(pdoracleStatement, SL("_options"), _1, _0 TSRMLS_CC);
 	RETURN_CCTOR(pdoracleStatement);
 
 }
 
 /**
- * Only query without params.
+ * Only query without prepare statement.
  *
  * @param STRING statement
  * @return Array
@@ -136,7 +141,7 @@ PHP_METHOD(PDOracle_PDOracle, prepare) {
 PHP_METHOD(PDOracle_PDOracle, query) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *statement_param = NULL, *engine, *pdoracleStatement, *_0 = NULL;
+	zval *statement_param = NULL, *engine, *pdoracleStatement, *_0, *_1, *_2 = NULL;
 	zval *statement = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -153,19 +158,36 @@ PHP_METHOD(PDOracle_PDOracle, query) {
 	object_init_ex(pdoracleStatement, pdoracle_pdoraclestatement_ce);
 	ZEPHIR_CALL_METHOD(NULL, pdoracleStatement, "__construct", NULL);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&_0, engine, "executequery", NULL, statement);
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_checkTransaction"), PH_NOISY_CC);
+	ZEPHIR_INIT_VAR(_1);
+	ZVAL_STRING(_1, "transaction", 1);
+	zephir_update_property_array(pdoracleStatement, SL("_options"), _1, _0 TSRMLS_CC);
+	ZEPHIR_CALL_METHOD(&_2, engine, "executequery", NULL, statement);
 	zephir_check_call_status();
-	zephir_update_property_zval(pdoracleStatement, SL("_ociParse"), _0 TSRMLS_CC);
+	zephir_update_property_zval(pdoracleStatement, SL("_ociParse"), _2 TSRMLS_CC);
 	RETURN_CCTOR(pdoracleStatement);
 
 }
 
 /**
  *
+ * @see
+ * @return
  */
 PHP_METHOD(PDOracle_PDOracle, beginTransaction) {
 
+	zval *_0;
+	zend_bool _return;
 
+
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_checkTransaction"), PH_NOISY_CC);
+	if (zephir_is_true(_0)) {
+		_return = 0;
+	} else {
+		zephir_update_property_this(this_ptr, SL("_checkTransaction"), (1) ? ZEPHIR_GLOBAL(global_true) : ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+		_return = 1;
+	}
+	RETURN_BOOL(_return);
 
 }
 
@@ -174,7 +196,55 @@ PHP_METHOD(PDOracle_PDOracle, beginTransaction) {
  */
 PHP_METHOD(PDOracle_PDOracle, commit) {
 
+	int ZEPHIR_LAST_CALL_STATUS;
+	zephir_nts_static zephir_fcall_cache_entry *_1 = NULL;
+	zval *_0 = NULL, *_2 = NULL, *_3;
 
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_CALL_PARENT(&_0, pdoracle_pdoracle_ce, this_ptr, "getinstance", &_1);
+	zephir_check_call_status();
+	ZEPHIR_CALL_FUNCTION(&_2, "oci_commit", NULL, _0);
+	zephir_check_call_status();
+	if (!(zephir_is_true(_2))) {
+		ZEPHIR_INIT_VAR(_3);
+		object_init_ex(_3, pdoracle_pdoracleexception_ce);
+		ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL);
+		zephir_check_call_status();
+		zephir_throw_exception_debug(_3, "pdoracle/PDOracle.zep", 102 TSRMLS_CC);
+		ZEPHIR_MM_RESTORE();
+		return;
+	}
+	RETURN_MM_BOOL(1);
+
+}
+
+/**
+ *
+ */
+PHP_METHOD(PDOracle_PDOracle, rollBack) {
+
+	int ZEPHIR_LAST_CALL_STATUS;
+	zephir_nts_static zephir_fcall_cache_entry *_1 = NULL;
+	zval *_0 = NULL;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_CALL_PARENT(&_0, pdoracle_pdoracle_ce, this_ptr, "getinstance", &_1);
+	zephir_check_call_status();
+	ZEPHIR_RETURN_CALL_FUNCTION("oci_rollback", NULL, _0);
+	zephir_check_call_status();
+	RETURN_MM();
+
+}
+
+/**
+ * Check whether transaction is running.
+ */
+PHP_METHOD(PDOracle_PDOracle, inTransaction) {
+
+
+	RETURN_MEMBER(this_ptr, "_checkTransaction");
 
 }
 
@@ -241,15 +311,6 @@ PHP_METHOD(PDOracle_PDOracle, getAvailableDrivers) {
 /**
  *
  */
-PHP_METHOD(PDOracle_PDOracle, inTransaction) {
-
-
-
-}
-
-/**
- *
- */
 PHP_METHOD(PDOracle_PDOracle, lastInsertId) {
 
 	zval *name_param = NULL;
@@ -289,15 +350,6 @@ PHP_METHOD(PDOracle_PDOracle, quote) {
 	} else {
 		parameter_type = zephir_get_intval(parameter_type_param);
 	}
-
-
-
-}
-
-/**
- *
- */
-PHP_METHOD(PDOracle_PDOracle, rollBack) {
 
 
 

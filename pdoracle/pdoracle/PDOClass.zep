@@ -21,6 +21,11 @@ class PDOClass {
     private _ociParse{get};
 
     /**
+     * Set options values such as commit or transactions.
+     */
+    private _options{set};
+
+    /**
      *
      */
     private _connection;
@@ -92,8 +97,14 @@ class PDOClass {
     public function executeQuery(string statement){
         var ociParse;
         let ociParse = oci_parse(PDOConnection::getInstance(), statement);
-        if !oci_execute(ociParse) {
-            throw new PDOracleException();
+        if this->_options["transaction"] == true {
+            if !oci_execute(ociParse, OCI_NO_AUTO_COMMIT) {
+                throw new PDOracleException();
+            }
+        }else{
+            if !oci_execute(ociParse) {
+                throw new PDOracleException();
+            }
         }
         return ociParse;
     }

@@ -39,7 +39,7 @@ class PDOracleException extends \Exception {
                    "</style>";
 
         let div .= "<div id='iEx'>".
-                        "<label class='hEx'> &nbsp; PDOracleException: </label> <span class='pEx'><i>".error["message"]."</i></span><br>".
+                        "<label class='hEx'> &nbsp; PDOracleException: </label> <span class='pEx'><i>".htmlentities(error["message"])."</i></span><br>".
                         "<label class='hEx'> &nbsp; Statement: </label><span class='pEx'><i>".error["sqltext"]."</i></span><br>".
                         "<label class='hEx'> &nbsp; Offset: </label><span class='pEx'><i>".error["offset"]."</i></span><br>".
                         "<label class='hEx'> &nbsp; File: </label><span class='pEx'><i>".trace[1]["file"]."</i></span><br>".

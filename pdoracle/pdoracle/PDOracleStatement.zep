@@ -15,6 +15,11 @@ class PDOracleStatement extends PDOClass {
     };
 
     /**
+     *
+     */
+    private _options = null {set};
+
+    /**
      * @type oci8 parse resource
      */
     private _ociParse{set};
@@ -40,7 +45,13 @@ class PDOracleStatement extends PDOClass {
         let this->_ociParse = null;
         let this->_ociParse = this->_prepareInterrogation(this->_queryString, inputParameters);
         let PDOConnection::_ociParse = this->_ociParse;
-        let error = oci_execute(this->_ociParse);
+
+        if this->_options["transaction"] === true {
+            let error = oci_execute(this->_ociParse, OCI_NO_AUTO_COMMIT);
+        }else{
+            let error = oci_execute(this->_ociParse);
+        }
+
         if !error {
             throw new PDOracleException();
         }else{

@@ -1,6 +1,0 @@
-
-namespace Pdoracle;
-
-class Engine{
-
-}

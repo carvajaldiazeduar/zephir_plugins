@@ -5,6 +5,7 @@ ZEPHIR_INIT_CLASS(Pdoracle_PDOracleStatement);
 
 PHP_METHOD(Pdoracle_PDOracleStatement, getQueryString);
 PHP_METHOD(Pdoracle_PDOracleStatement, setQueryString);
+PHP_METHOD(Pdoracle_PDOracleStatement, setOptions);
 PHP_METHOD(Pdoracle_PDOracleStatement, setOciParse);
 PHP_METHOD(Pdoracle_PDOracleStatement, __construc);
 PHP_METHOD(Pdoracle_PDOracleStatement, execute);
@@ -29,6 +30,10 @@ PHP_METHOD(Pdoracle_PDOracleStatement, setFetchMode);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_pdoracle_pdoraclestatement_setquerystring, 0, 0, 1)
 	ZEND_ARG_INFO(0, queryString)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_pdoracle_pdoraclestatement_setoptions, 0, 0, 1)
+	ZEND_ARG_INFO(0, options)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_pdoracle_pdoraclestatement_setociparse, 0, 0, 1)
@@ -102,6 +107,7 @@ ZEND_END_ARG_INFO()
 ZEPHIR_INIT_FUNCS(pdoracle_pdoraclestatement_method_entry) {
 	PHP_ME(Pdoracle_PDOracleStatement, getQueryString, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOracleStatement, setQueryString, arginfo_pdoracle_pdoraclestatement_setquerystring, ZEND_ACC_PUBLIC)
+	PHP_ME(Pdoracle_PDOracleStatement, setOptions, arginfo_pdoracle_pdoraclestatement_setoptions, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOracleStatement, setOciParse, arginfo_pdoracle_pdoraclestatement_setociparse, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOracleStatement, __construc, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOracleStatement, execute, arginfo_pdoracle_pdoraclestatement_execute, ZEND_ACC_PUBLIC)

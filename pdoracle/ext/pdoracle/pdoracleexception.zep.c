@@ -41,9 +41,10 @@ ZEPHIR_INIT_CLASS(Pdoracle_PDOracleException) {
  */
 PHP_METHOD(Pdoracle_PDOracleException, __construct) {
 
+	zephir_nts_static zephir_fcall_cache_entry *_3 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
 	zval *div = NULL;
-	zval *exc, *trace = NULL, *error = NULL, *_0, *_1, *_2, *_3, *_4, *_5, *_6, *_7, *_8;
+	zval *exc, *trace = NULL, *error = NULL, *_0, *_1, *_2 = NULL, *_4, *_5, *_6, *_7, *_8, *_9, *_10;
 
 	ZEPHIR_MM_GROW();
 
@@ -59,15 +60,17 @@ PHP_METHOD(Pdoracle_PDOracleException, __construct) {
 	ZEPHIR_INIT_VAR(div);
 	ZEPHIR_CONCAT_SSSSSSSSSSSS(div, "<style>", "#iEx{", "background:#F5D0A9;", "width:100%;", "}", ".hEx{", "color:white;font-size:16px;font-weight:bold;", "}", ".pEx{", "color:#FBF8EF;", "}", "</style>");
 	zephir_array_fetch_string(&_1, error, SL("message"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_array_fetch_string(&_2, error, SL("sqltext"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_array_fetch_string(&_3, error, SL("offset"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_array_fetch_long(&_4, trace, 1, PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_array_fetch_string(&_5, _4, SL("file"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	ZEPHIR_CALL_FUNCTION(&_2, "htmlentities", &_3, _1);
+	zephir_check_call_status();
+	zephir_array_fetch_string(&_4, error, SL("sqltext"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_string(&_5, error, SL("offset"), PH_NOISY | PH_READONLY TSRMLS_CC);
 	zephir_array_fetch_long(&_6, trace, 1, PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_array_fetch_string(&_7, _6, SL("function"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	ZEPHIR_INIT_VAR(_8);
-	ZEPHIR_CONCAT_SSVSSVSSVSSVSSVSS(_8, "<div id='iEx'>", "<label class='hEx'> &nbsp; PDOracleException: </label> <span class='pEx'><i>", _1, "</i></span><br>", "<label class='hEx'> &nbsp; Statement: </label><span class='pEx'><i>", _2, "</i></span><br>", "<label class='hEx'> &nbsp; Offset: </label><span class='pEx'><i>", _3, "</i></span><br>", "<label class='hEx'> &nbsp; File: </label><span class='pEx'><i>", _5, "</i></span><br>", "<label class='hEx'> &nbsp; Function: </label><span class='pEx'><i>", _7, "</i></span>", "</div>");
-	zephir_concat_self(&div, _8 TSRMLS_CC);
+	zephir_array_fetch_string(&_7, _6, SL("file"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_long(&_8, trace, 1, PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_string(&_9, _8, SL("function"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_10);
+	ZEPHIR_CONCAT_SSVSSVSSVSSVSSVSS(_10, "<div id='iEx'>", "<label class='hEx'> &nbsp; PDOracleException: </label> <span class='pEx'><i>", _2, "</i></span><br>", "<label class='hEx'> &nbsp; Statement: </label><span class='pEx'><i>", _4, "</i></span><br>", "<label class='hEx'> &nbsp; Offset: </label><span class='pEx'><i>", _5, "</i></span><br>", "<label class='hEx'> &nbsp; File: </label><span class='pEx'><i>", _7, "</i></span><br>", "<label class='hEx'> &nbsp; Function: </label><span class='pEx'><i>", _9, "</i></span>", "</div>");
+	zephir_concat_self(&div, _10 TSRMLS_CC);
 	zephir_update_property_this(this_ptr, SL("message"), div TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 

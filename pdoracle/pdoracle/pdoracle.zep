@@ -13,25 +13,25 @@ namespace PDOracle;
 class PDOracle extends PDOConnection {
 
     /**
-     *
+     * Verify whether is actually is in a transaction.
      */
-    private static _connection;
+    private _checkTransaction;
 
     /**
-     *
+     * verify sequences to lastInsertId Method.
      */
     private _table_name;
 
     /**
      *
-     * @param String user
-     * @param String password
-     * @param String server
+     *
+     * @param String user oci8 user
+     * @param String password oci8 password
+     * @param String server Instance oci8
      * @param Array optional
      * @return PDOracle
      */
     public function __construct (string dns, string username, string password , var options = ""){
-
         if is_null(parent::getInstance()) {
 
             let parent::dns = dns;
@@ -42,7 +42,6 @@ class PDOracle extends PDOConnection {
                 throw new PDOracleException();
             }
         }
-
     }
 
     /**
@@ -57,11 +56,13 @@ class PDOracle extends PDOConnection {
         var pdoracleStatement;
         let pdoracleStatement = new PDOracleStatement();
         let pdoracleStatement->_queryString = statement;
+        let pdoracleStatement->_options["transaction"] = this->_checkTransaction;
         return pdoracleStatement;
+
     }
 
     /**
-     * Only query without params.
+     * Only query without prepare statement.
      *
      * @param STRING statement
      * @return Array
@@ -71,7 +72,7 @@ class PDOracle extends PDOConnection {
         var engine, pdoracleStatement;
         let engine = new PDOClass();
         let pdoracleStatement = new PDOracleStatement();
-
+        let pdoracleStatement->_options["transaction"] = this->_checkTransaction;
         let pdoracleStatement->_ociParse = engine->executeQuery(statement);
         return pdoracleStatement;
 
@@ -79,16 +80,42 @@ class PDOracle extends PDOConnection {
 
     /**
      *
+     * @see
+     * @return
      */
     public function beginTransaction () -> boolean {
-
+        var _return;
+        if this->_checkTransaction {
+            let _return =  false;
+        }else{
+            let this->_checkTransaction = true;
+            let _return = true;
+        }
+        return _return;
     }
 
     /**
      *
      */
     public function commit () -> boolean {
+        if !oci_commit(parent::getInstance()) {
+            throw new PDOracleException();
+        }
+        return true;
+    }
 
+    /**
+     *
+     */
+    public function rollBack () -> boolean {
+        return oci_rollback(parent::getInstance());
+    }
+
+    /**
+     * Check whether transaction is running.
+     */
+    public function inTransaction () -> boolean {
+        return this->_checkTransaction;
     }
 
     /**
@@ -130,14 +157,7 @@ class PDOracle extends PDOConnection {
     /**
      *
      */
-    public function inTransaction () -> boolean {
-
-    }
-
-    /**
-     *
-     */
-    public function lastInsertId (string name = NULL) -> string{
+    public function lastInsertId (string name = NULL) -> string {
 
     }
 
@@ -147,13 +167,6 @@ class PDOracle extends PDOConnection {
      * @param Integer parameter_type PDO::PARAM_STR
      */
     public function quote (string string_param , int parameter_type = 0) -> string {
-
-    }
-
-    /**
-     *
-     */
-    public function rollBack () -> boolean {
 
     }
 
