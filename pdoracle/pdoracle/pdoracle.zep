@@ -10,7 +10,7 @@ namespace PDOracle;
  * @licence Open Source
  *
  */
-class PDOracle extends \PDO {
+class PDOracle extends PDOConnection {
 
     /**
      *
@@ -32,44 +32,53 @@ class PDOracle extends \PDO {
      */
     public function __construct (string dns, string username, string password , var options = ""){
 
-        if is_null(self::_connection) {
+        if is_null(parent::getInstance()) {
 
-            var connection;
-            let connection = new Connection();
+            let parent::dns = dns;
+            let parent::usr = username;
+            let parent::password = password;
 
-            let connection::dns = dns;
-            let connection::usr = username;
-            let connection::password = password;
-            let self::_connection = connection::getInstance();
+            if is_null(parent::getInstance()){
+                throw new PDOracleException();
+            }
         }
 
     }
 
     /**
+     * Prepare anyway query to proccess.
      *
+     * @param STRING statement
+     * @param STRING drive_options
+     * @return Instance of PDOracleStatement
      */
     public function prepare (string statement , var driver_options = "") -> <PDOracleStatement> {
 
         var pdoracleStatement;
         let pdoracleStatement = new PDOracleStatement();
         let pdoracleStatement->_queryString = statement;
-        let pdoracleStatement->_connection = self::_connection;
 
         return pdoracleStatement;
+    }
+
+    /**
+     * Only query without params.
+     *
+     * @param STRING statement
+     * @return Array
+     */
+    public function query (string statement) {
+
+        //var engine;
+        //let engine = new PDOClass();
+        //return engine->executeQuery(statement);
 
     }
 
     /**
      *
      */
-    public function query ( string statement ) -> <PDOracleStatement>{
-
-    }
-
-    /**
-     *
-     */
-    public function beginTransaction() -> boolean {
+    public function beginTransaction () -> boolean {
 
     }
 

@@ -4,36 +4,59 @@ namespace Pdoracle;
 /**
  *
  */
-class PDOracleStatement {
+class PDOracleStatement extends PDOClass {
 
     /**
-     *
+     * Store simple query inserted for user
      */
-    private _queryString{get, set};
+    private _queryString{
+        get,
+        set
+    };
 
     /**
-     *
+     * @type oci8 parse resource
      */
-    private _connection;
+    private _ociParse;
 
     /**
-     *
+     * Initialize contruct with oci8 connection.
      */
-    public function execute (var inputParameters = "") -> boolean {
-
-        var prepareSQL, parseSQL;
-        let prepareSQL = new EngineSQL();
-        let prepareSQL->_ociConnection = this->_connection;
-        let parseSQL = prepareSQL->_prepareInterrogation(this->_queryString, inputParameters);
-        return oci_execute(parseSQL);
-
+    public function __construc(){
+        if is_null(PDOConnection::getInstance()) {
+            throw new PDOracleException();
+        }
     }
 
     /**
+     * Execute a transaction oci8_parse
      *
+     * @see http://www.php.net/manual/en/pdostatement.execute.php
+     * @param Array inputParameters
+     * @return BOOLEAN
      */
-    public function $fetch (int fetchStyle , int cursorOrientation = 0, int cursorOffset = 0){
+    public function execute (var inputParameters = "") -> boolean {
+        var error;
+        let this->_ociParse = null;
+        let this->_ociParse = this->_prepareInterrogation(this->_queryString, inputParameters);
+        let error = oci_execute(this->_ociParse);
+        if !error {
+            throw new PDOracleException();
+        }else{
+            return TRUE;
+        }
+    }
 
+    /**
+     * Fetch data as array collection
+     *
+     * @param INTEGER fetchStyle
+     * @param INTEGER cursorOrientation
+     * @param INTEGER cursorOffset
+     * @return Array OCI_FETCH_ARRAY
+     */
+    public function $fetch (int fetchStyle = 0, int cursorOrientation = 0, int cursorOffset = 0) {
+        return oci_fetch_array(this->_ociParse);
     }
 
     /**

@@ -41,11 +41,12 @@ class PDOracleException extends \Exception{
 
         let ociError = oci_error();
         let pre_message = "<div style='width:100px;'>".
-                                "<ul style>".
+                                "<ul style='background:gray;'>".
                                     "<li><h3 style='color:red;'>SQL TEXT</h3> -> ".ociError["sqltext"]."</li>".
                                     "<li><h3 style='color:red;'>MESSAGE</h3> -> ".ociError["message"]."</li>".
                                     "<li><h3 style='color:red;'>ORACLE CODE</h3> -> ".ociError["code"]."</li>".
                                     "<li><h3 style='color:red;'>OFFSET</h3> -> ".ociError["offset"]."</li>".
+                                    "<li><h3 style='color:red;'>FILE ERROR</h3> -> ".getcwd()."</li>".
                                 "</ul>".
                            "</div>";
 

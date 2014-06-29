@@ -38,10 +38,10 @@ kernel/iterator.lo: /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/kernel/iterator.c -o kernel/iterator.lo 
 kernel/exit.lo: /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/kernel/exit.c
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/kernel/exit.c -o kernel/exit.lo 
-pdoracle/connection.lo: /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/connection.zep.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/connection.zep.c -o pdoracle/connection.lo 
-pdoracle/enginesql.lo: /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/enginesql.zep.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/enginesql.zep.c -o pdoracle/enginesql.lo 
+pdoracle/pdoclass.lo: /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/pdoclass.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/pdoclass.zep.c -o pdoracle/pdoclass.lo 
+pdoracle/pdoconnection.lo: /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/pdoconnection.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/pdoconnection.zep.c -o pdoracle/pdoconnection.lo 
 pdoracle/pdoracle.lo: /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/pdoracle.zep.c
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/pdoracle.zep.c -o pdoracle/pdoracle.lo 
 pdoracle/pdoracleexception.lo: /Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/ext/pdoracle/pdoracleexception.zep.c

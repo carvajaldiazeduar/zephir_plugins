@@ -5,6 +5,7 @@ ZEPHIR_INIT_CLASS(Pdoracle_PDOracleStatement);
 
 PHP_METHOD(Pdoracle_PDOracleStatement, getQueryString);
 PHP_METHOD(Pdoracle_PDOracleStatement, setQueryString);
+PHP_METHOD(Pdoracle_PDOracleStatement, __construc);
 PHP_METHOD(Pdoracle_PDOracleStatement, execute);
 PHP_METHOD(Pdoracle_PDOracleStatement, fetch);
 PHP_METHOD(Pdoracle_PDOracleStatement, bindColumn);
@@ -33,7 +34,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_pdoracle_pdoraclestatement_execute, 0, 0, 0)
 	ZEND_ARG_INFO(0, inputParameters)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_pdoracle_pdoraclestatement_fetch, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_pdoracle_pdoraclestatement_fetch, 0, 0, 0)
 	ZEND_ARG_INFO(0, fetchStyle)
 	ZEND_ARG_INFO(0, cursorOrientation)
 	ZEND_ARG_INFO(0, cursorOffset)
@@ -96,6 +97,7 @@ ZEND_END_ARG_INFO()
 ZEPHIR_INIT_FUNCS(pdoracle_pdoraclestatement_method_entry) {
 	PHP_ME(Pdoracle_PDOracleStatement, getQueryString, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOracleStatement, setQueryString, arginfo_pdoracle_pdoraclestatement_setquerystring, ZEND_ACC_PUBLIC)
+	PHP_ME(Pdoracle_PDOracleStatement, __construc, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOracleStatement, execute, arginfo_pdoracle_pdoraclestatement_execute, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOracleStatement, fetch, arginfo_pdoracle_pdoraclestatement_fetch, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOracleStatement, bindColumn, arginfo_pdoracle_pdoraclestatement_bindcolumn, ZEND_ACC_PUBLIC)

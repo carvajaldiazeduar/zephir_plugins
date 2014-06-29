@@ -12,10 +12,10 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
-#include "ext/pdo/php_pdo_driver.h"
-#include "kernel/object.h"
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
+#include "kernel/object.h"
+#include "kernel/exception.h"
 #include "kernel/operators.h"
 
 
@@ -30,7 +30,7 @@
  */
 ZEPHIR_INIT_CLASS(PDOracle_PDOracle) {
 
-	ZEPHIR_REGISTER_CLASS_EX(PDOracle, PDOracle, pdoracle, pdoracle, php_pdo_get_dbh_ce(), pdoracle_pdoracle_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS_EX(PDOracle, PDOracle, pdoracle, pdoracle, pdoracle_pdoconnection_ce, pdoracle_pdoracle_method_entry, 0);
 
 	/**
 	 *
@@ -56,9 +56,9 @@ ZEPHIR_INIT_CLASS(PDOracle_PDOracle) {
  */
 PHP_METHOD(PDOracle_PDOracle, __construct) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_2 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *dns_param = NULL, *username_param = NULL, *password_param = NULL, *options = NULL, *_0, *connection, *_1 = NULL;
+	zephir_nts_static zephir_fcall_cache_entry *_1 = NULL;
+	zval *dns_param = NULL, *username_param = NULL, *password_param = NULL, *options = NULL, *_0 = NULL, *_2 = NULL, *_3;
 	zval *dns = NULL, *username = NULL, *password = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -73,32 +73,39 @@ PHP_METHOD(PDOracle_PDOracle, __construct) {
 	}
 
 
-	_0 = zephir_fetch_static_property_ce(pdoracle_pdoracle_ce, SL("_connection") TSRMLS_CC);
+	ZEPHIR_CALL_PARENT(&_0, pdoracle_pdoracle_ce, this_ptr, "getinstance", &_1);
+	zephir_check_call_status();
 	if (Z_TYPE_P(_0) == IS_NULL) {
-		ZEPHIR_INIT_VAR(connection);
-		object_init_ex(connection, pdoracle_connection_ce);
-		if (zephir_has_constructor(connection TSRMLS_CC)) {
-			ZEPHIR_CALL_METHOD(NULL, connection, "__construct", NULL);
-			zephir_check_call_status();
-		}
-		zephir_update_static_property_ce(pdoracle_connection_ce, SL("dns"), dns TSRMLS_CC);
-		zephir_update_static_property_ce(pdoracle_connection_ce, SL("usr"), username TSRMLS_CC);
-		zephir_update_static_property_ce(pdoracle_connection_ce, SL("password"), password TSRMLS_CC);
-		ZEPHIR_CALL_CE_STATIC(&_1, pdoracle_connection_ce, "getinstance", &_2);
+		zephir_update_static_property_ce(pdoracle_pdoconnection_ce, SL("dns"), dns TSRMLS_CC);
+		zephir_update_static_property_ce(pdoracle_pdoconnection_ce, SL("usr"), username TSRMLS_CC);
+		zephir_update_static_property_ce(pdoracle_pdoconnection_ce, SL("password"), password TSRMLS_CC);
+		ZEPHIR_CALL_PARENT(&_2, pdoracle_pdoracle_ce, this_ptr, "getinstance", &_1);
 		zephir_check_call_status();
-		zephir_update_static_property_ce(pdoracle_pdoracle_ce, SL("_connection"), _1 TSRMLS_CC);
+		if (Z_TYPE_P(_2) == IS_NULL) {
+			ZEPHIR_INIT_VAR(_3);
+			object_init_ex(_3, pdoracle_pdoracleexception_ce);
+			ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL);
+			zephir_check_call_status();
+			zephir_throw_exception_debug(_3, "pdoracle/PDOracle.zep", 42 TSRMLS_CC);
+			ZEPHIR_MM_RESTORE();
+			return;
+		}
 	}
 	ZEPHIR_MM_RESTORE();
 
 }
 
 /**
+ * Prepare anyway query to proccess.
  *
+ * @param STRING statement
+ * @param STRING drive_options
+ * @return Instance of PDOracleStatement
  */
 PHP_METHOD(PDOracle_PDOracle, prepare) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *statement_param = NULL, *driver_options = NULL, *pdoracleStatement, *_0;
+	zval *statement_param = NULL, *driver_options = NULL, *pdoracleStatement;
 	zval *statement = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -113,19 +120,18 @@ PHP_METHOD(PDOracle_PDOracle, prepare) {
 
 	ZEPHIR_INIT_VAR(pdoracleStatement);
 	object_init_ex(pdoracleStatement, pdoracle_pdoraclestatement_ce);
-	if (zephir_has_constructor(pdoracleStatement TSRMLS_CC)) {
-		ZEPHIR_CALL_METHOD(NULL, pdoracleStatement, "__construct", NULL);
-		zephir_check_call_status();
-	}
+	ZEPHIR_CALL_METHOD(NULL, pdoracleStatement, "__construct", NULL);
+	zephir_check_call_status();
 	zephir_update_property_zval(pdoracleStatement, SL("_queryString"), statement TSRMLS_CC);
-	zephir_read_static_property_ce(&_0, pdoracle_pdoracle_ce, SL("_connection") TSRMLS_CC);
-	zephir_update_property_zval(pdoracleStatement, SL("_connection"), _0 TSRMLS_CC);
 	RETURN_CCTOR(pdoracleStatement);
 
 }
 
 /**
+ * Only query without params.
  *
+ * @param STRING statement
+ * @return Array
  */
 PHP_METHOD(PDOracle_PDOracle, query) {
 

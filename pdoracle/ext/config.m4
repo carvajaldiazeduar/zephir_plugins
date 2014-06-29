@@ -2,8 +2,8 @@ PHP_ARG_ENABLE(pdoracle, whether to enable pdoracle, [ --enable-pdoracle   Enabl
 
 if test "$PHP_PDORACLE" = "yes"; then
 	AC_DEFINE(HAVE_PDORACLE, 1, [Whether you have Pdoracle])
-	pdoracle_sources="pdoracle.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/exit.c pdoracle/connection.zep.c
-	pdoracle/enginesql.zep.c
+	pdoracle_sources="pdoracle.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/exit.c pdoracle/pdoclass.zep.c
+	pdoracle/pdoconnection.zep.c
 	pdoracle/pdoracle.zep.c
 	pdoracle/pdoracleexception.zep.c
 	pdoracle/pdoraclestatement.zep.c "

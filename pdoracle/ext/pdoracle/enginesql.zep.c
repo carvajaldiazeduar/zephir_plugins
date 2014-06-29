@@ -35,6 +35,11 @@ ZEPHIR_INIT_CLASS(Pdoracle_EngineSQL) {
 	 */
 	zend_declare_property_null(pdoracle_enginesql_ce, SL("_ociConnection"), ZEND_ACC_PRIVATE TSRMLS_CC);
 
+	/**
+	 *
+	 */
+	zend_declare_property_null(pdoracle_enginesql_ce, SL("_ociParse"), ZEND_ACC_PRIVATE TSRMLS_CC);
+
 	return SUCCESS;
 
 }
@@ -61,6 +66,16 @@ PHP_METHOD(Pdoracle_EngineSQL, getOciConnection) {
 
 
 	RETURN_MEMBER(this_ptr, "_ociConnection");
+
+}
+
+/**
+ *
+ */
+PHP_METHOD(Pdoracle_EngineSQL, getOciParse) {
+
+
+	RETURN_MEMBER(this_ptr, "_ociParse");
 
 }
 

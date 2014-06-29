@@ -15,6 +15,7 @@
 #include "kernel/object.h"
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
+#include "kernel/exception.h"
 #include "kernel/operators.h"
 
 
@@ -23,24 +24,24 @@
  */
 ZEPHIR_INIT_CLASS(Pdoracle_PDOracleStatement) {
 
-	ZEPHIR_REGISTER_CLASS(Pdoracle, PDOracleStatement, pdoracle, pdoraclestatement, pdoracle_pdoraclestatement_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS_EX(Pdoracle, PDOracleStatement, pdoracle, pdoraclestatement, pdoracle_pdoclass_ce, pdoracle_pdoraclestatement_method_entry, 0);
 
 	/**
-	 *
+	 * Store simple query inserted for user
 	 */
 	zend_declare_property_null(pdoracle_pdoraclestatement_ce, SL("_queryString"), ZEND_ACC_PRIVATE TSRMLS_CC);
 
 	/**
-	 *
+	 * @type oci8 parse resource
 	 */
-	zend_declare_property_null(pdoracle_pdoraclestatement_ce, SL("_connection"), ZEND_ACC_PRIVATE TSRMLS_CC);
+	zend_declare_property_null(pdoracle_pdoraclestatement_ce, SL("_ociParse"), ZEND_ACC_PRIVATE TSRMLS_CC);
 
 	return SUCCESS;
 
 }
 
 /**
- *
+ * Store simple query inserted for user
  */
 PHP_METHOD(Pdoracle_PDOracleStatement, getQueryString) {
 
@@ -50,7 +51,7 @@ PHP_METHOD(Pdoracle_PDOracleStatement, getQueryString) {
 }
 
 /**
- *
+ * Store simple query inserted for user
  */
 PHP_METHOD(Pdoracle_PDOracleStatement, setQueryString) {
 
@@ -65,12 +66,42 @@ PHP_METHOD(Pdoracle_PDOracleStatement, setQueryString) {
 }
 
 /**
+ * Initialize contruct with oci8 connection.
+ */
+PHP_METHOD(Pdoracle_PDOracleStatement, __construc) {
+
+	int ZEPHIR_LAST_CALL_STATUS;
+	zephir_nts_static zephir_fcall_cache_entry *_1 = NULL;
+	zval *_0 = NULL, *_2;
+
+	ZEPHIR_MM_GROW();
+
+	ZEPHIR_CALL_CE_STATIC(&_0, pdoracle_pdoconnection_ce, "getinstance", &_1);
+	zephir_check_call_status();
+	if (Z_TYPE_P(_0) == IS_NULL) {
+		ZEPHIR_INIT_VAR(_2);
+		object_init_ex(_2, pdoracle_pdoracleexception_ce);
+		ZEPHIR_CALL_METHOD(NULL, _2, "__construct", NULL);
+		zephir_check_call_status();
+		zephir_throw_exception_debug(_2, "pdoracle/PDOracleStatement.zep", 27 TSRMLS_CC);
+		ZEPHIR_MM_RESTORE();
+		return;
+	}
+	ZEPHIR_MM_RESTORE();
+
+}
+
+/**
+ * Execute a transaction oci8_parse
  *
+ * @see http://www.php.net/manual/en/pdostatement.execute.php
+ * @param Array inputParameters
+ * @return BOOLEAN
  */
 PHP_METHOD(Pdoracle_PDOracleStatement, execute) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *inputParameters = NULL, *prepareSQL, *parseSQL = NULL, *_0, *_1;
+	zval *inputParameters = NULL, *error = NULL, *_0 = NULL, *_1, *_2, *_3;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 0, 1, &inputParameters);
@@ -81,34 +112,49 @@ PHP_METHOD(Pdoracle_PDOracleStatement, execute) {
 	}
 
 
-	ZEPHIR_INIT_VAR(prepareSQL);
-	object_init_ex(prepareSQL, pdoracle_enginesql_ce);
-	if (zephir_has_constructor(prepareSQL TSRMLS_CC)) {
-		ZEPHIR_CALL_METHOD(NULL, prepareSQL, "__construct", NULL);
-		zephir_check_call_status();
-	}
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_connection"), PH_NOISY_CC);
-	zephir_update_property_zval(prepareSQL, SL("_ociConnection"), _0 TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("_ociParse"), ZEPHIR_GLOBAL(global_null) TSRMLS_CC);
 	_1 = zephir_fetch_nproperty_this(this_ptr, SL("_queryString"), PH_NOISY_CC);
-	ZEPHIR_CALL_METHOD(&parseSQL, prepareSQL, "_prepareinterrogation", NULL, _1, inputParameters);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "_prepareinterrogation", NULL, _1, inputParameters);
 	zephir_check_call_status();
-	ZEPHIR_RETURN_CALL_FUNCTION("oci_execute", NULL, parseSQL);
+	zephir_update_property_this(this_ptr, SL("_ociParse"), _0 TSRMLS_CC);
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
+	ZEPHIR_CALL_FUNCTION(&error, "oci_execute", NULL, _2);
 	zephir_check_call_status();
-	RETURN_MM();
+	if (!(zephir_is_true(error))) {
+		ZEPHIR_INIT_VAR(_3);
+		object_init_ex(_3, pdoracle_pdoracleexception_ce);
+		ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL);
+		zephir_check_call_status();
+		zephir_throw_exception_debug(_3, "pdoracle/PDOracleStatement.zep", 44 TSRMLS_CC);
+		ZEPHIR_MM_RESTORE();
+		return;
+	} else {
+		RETURN_MM_BOOL(1);
+	}
 
 }
 
 /**
+ * Fetch data as array collection
  *
+ * @param INTEGER fetchStyle
+ * @param INTEGER cursorOrientation
+ * @param INTEGER cursorOffset
+ * @return Array OCI_FETCH_ARRAY
  */
 PHP_METHOD(Pdoracle_PDOracleStatement, fetch) {
 
-	zval *fetchStyle_param = NULL, *cursorOrientation_param = NULL, *cursorOffset_param = NULL;
-	int fetchStyle, cursorOrientation, cursorOffset;
+	zval *fetchStyle_param = NULL, *cursorOrientation_param = NULL, *cursorOffset_param = NULL, *_0;
+	int fetchStyle, cursorOrientation, cursorOffset, ZEPHIR_LAST_CALL_STATUS;
 
-	zephir_fetch_params(0, 1, 2, &fetchStyle_param, &cursorOrientation_param, &cursorOffset_param);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 0, 3, &fetchStyle_param, &cursorOrientation_param, &cursorOffset_param);
 
-	fetchStyle = zephir_get_intval(fetchStyle_param);
+	if (!fetchStyle_param) {
+		fetchStyle = 0;
+	} else {
+		fetchStyle = zephir_get_intval(fetchStyle_param);
+	}
 	if (!cursorOrientation_param) {
 		cursorOrientation = 0;
 	} else {
@@ -121,6 +167,10 @@ PHP_METHOD(Pdoracle_PDOracleStatement, fetch) {
 	}
 
 
+	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
+	ZEPHIR_RETURN_CALL_FUNCTION("oci_fetch_array", NULL, _0);
+	zephir_check_call_status();
+	RETURN_MM();
 
 }
 
