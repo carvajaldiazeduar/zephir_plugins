@@ -135,7 +135,8 @@ PHP_METHOD(PDOracle_PDOracle, prepare) {
  */
 PHP_METHOD(PDOracle_PDOracle, query) {
 
-	zval *statement_param = NULL;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *statement_param = NULL, *engine, *pdoracleStatement, *_0 = NULL;
 	zval *statement = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -144,6 +145,18 @@ PHP_METHOD(PDOracle_PDOracle, query) {
 	zephir_get_strval(statement, statement_param);
 
 
+	ZEPHIR_INIT_VAR(engine);
+	object_init_ex(engine, pdoracle_pdoclass_ce);
+	ZEPHIR_CALL_METHOD(NULL, engine, "__construct", NULL);
+	zephir_check_call_status();
+	ZEPHIR_INIT_VAR(pdoracleStatement);
+	object_init_ex(pdoracleStatement, pdoracle_pdoraclestatement_ce);
+	ZEPHIR_CALL_METHOD(NULL, pdoracleStatement, "__construct", NULL);
+	zephir_check_call_status();
+	ZEPHIR_CALL_METHOD(&_0, engine, "executequery", NULL, statement);
+	zephir_check_call_status();
+	zephir_update_property_zval(pdoracleStatement, SL("_ociParse"), _0 TSRMLS_CC);
+	RETURN_CCTOR(pdoracleStatement);
 
 }
 

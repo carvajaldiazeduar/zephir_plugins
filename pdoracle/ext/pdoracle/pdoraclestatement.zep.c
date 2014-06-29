@@ -66,6 +66,21 @@ PHP_METHOD(Pdoracle_PDOracleStatement, setQueryString) {
 }
 
 /**
+ * @type oci8 parse resource
+ */
+PHP_METHOD(Pdoracle_PDOracleStatement, setOciParse) {
+
+	zval *ociParse;
+
+	zephir_fetch_params(0, 1, 0, &ociParse);
+
+
+
+	zephir_update_property_this(this_ptr, SL("_ociParse"), ociParse TSRMLS_CC);
+
+}
+
+/**
  * Initialize contruct with oci8 connection.
  */
 PHP_METHOD(Pdoracle_PDOracleStatement, __construc) {
@@ -118,6 +133,8 @@ PHP_METHOD(Pdoracle_PDOracleStatement, execute) {
 	zephir_check_call_status();
 	zephir_update_property_this(this_ptr, SL("_ociParse"), _0 TSRMLS_CC);
 	_2 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
+	zephir_update_static_property_ce(pdoracle_pdoconnection_ce, SL("_ociParse"), _2 TSRMLS_CC);
+	_2 = zephir_fetch_nproperty_this(this_ptr, SL("_ociParse"), PH_NOISY_CC);
 	ZEPHIR_CALL_FUNCTION(&error, "oci_execute", NULL, _2);
 	zephir_check_call_status();
 	if (!(zephir_is_true(error))) {
@@ -125,7 +142,7 @@ PHP_METHOD(Pdoracle_PDOracleStatement, execute) {
 		object_init_ex(_3, pdoracle_pdoracleexception_ce);
 		ZEPHIR_CALL_METHOD(NULL, _3, "__construct", NULL);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_3, "pdoracle/PDOracleStatement.zep", 44 TSRMLS_CC);
+		zephir_throw_exception_debug(_3, "pdoracle/PDOracleStatement.zep", 45 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	} else {

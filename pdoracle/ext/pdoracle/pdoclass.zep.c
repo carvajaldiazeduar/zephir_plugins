@@ -188,9 +188,7 @@ PHP_METHOD(Pdoracle_PDOClass, executeQuery) {
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
-	ZEPHIR_RETURN_CALL_FUNCTION("oci_fetch_array", NULL, ociParse);
-	zephir_check_call_status();
-	RETURN_MM();
+	RETURN_CCTOR(ociParse);
 
 }
 

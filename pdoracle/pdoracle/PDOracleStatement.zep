@@ -17,7 +17,7 @@ class PDOracleStatement extends PDOClass {
     /**
      * @type oci8 parse resource
      */
-    private _ociParse;
+    private _ociParse{set};
 
     /**
      * Initialize contruct with oci8 connection.
@@ -39,6 +39,7 @@ class PDOracleStatement extends PDOClass {
         var error;
         let this->_ociParse = null;
         let this->_ociParse = this->_prepareInterrogation(this->_queryString, inputParameters);
+        let PDOConnection::_ociParse = this->_ociParse;
         let error = oci_execute(this->_ociParse);
         if !error {
             throw new PDOracleException();

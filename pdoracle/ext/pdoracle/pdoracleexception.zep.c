@@ -12,12 +12,12 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
+#include "kernel/memory.h"
 #include "kernel/fcall.h"
+#include "kernel/object.h"
 #include "kernel/concat.h"
 #include "kernel/array.h"
-#include "kernel/memory.h"
 #include "kernel/operators.h"
-#include "kernel/object.h"
 
 
 /**
@@ -32,26 +32,6 @@ ZEPHIR_INIT_CLASS(Pdoracle_PDOracleException) {
 
 	ZEPHIR_REGISTER_CLASS_EX(Pdoracle, PDOracleException, pdoracle, pdoracleexception, zend_exception_get_default(TSRMLS_C), pdoracle_pdoracleexception_method_entry, 0);
 
-	/**
-	 *
-	 */
-	zend_declare_property_null(pdoracle_pdoracleexception_ce, SL("message"), ZEND_ACC_PRIVATE TSRMLS_CC);
-
-	/**
-	 *
-	 */
-	zend_declare_property_null(pdoracle_pdoracleexception_ce, SL("code"), ZEND_ACC_PRIVATE TSRMLS_CC);
-
-	/**
-	 *
-	 */
-	zend_declare_property_null(pdoracle_pdoracleexception_ce, SL("filen"), ZEND_ACC_PRIVATE TSRMLS_CC);
-
-	/**
-	 *
-	 */
-	zend_declare_property_null(pdoracle_pdoracleexception_ce, SL("line"), ZEND_ACC_PRIVATE TSRMLS_CC);
-
 	return SUCCESS;
 
 }
@@ -61,33 +41,34 @@ ZEPHIR_INIT_CLASS(Pdoracle_PDOracleException) {
  */
 PHP_METHOD(Pdoracle_PDOracleException, __construct) {
 
-	zephir_nts_static zephir_fcall_cache_entry *_5 = NULL;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *pre_message = NULL;
-	zval *ociError = NULL, *_0, *_1, *_2, *_3, *_4 = NULL, *_6, *_7, *_8 = NULL, *_9;
+	zval *div = NULL;
+	zval *exc, *trace = NULL, *error = NULL, *_0, *_1, *_2, *_3, *_4, *_5, *_6, *_7, *_8;
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_FUNCTION(&ociError, "oci_error", NULL);
+	ZEPHIR_INIT_VAR(exc);
+	object_init_ex(exc, zend_exception_get_default(TSRMLS_C));
+	ZEPHIR_CALL_METHOD(NULL, exc, "__construct", NULL);
 	zephir_check_call_status();
-	zephir_array_fetch_string(&_0, ociError, SL("sqltext"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_array_fetch_string(&_1, ociError, SL("message"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_array_fetch_string(&_2, ociError, SL("code"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_array_fetch_string(&_3, ociError, SL("offset"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	ZEPHIR_CALL_FUNCTION(&_4, "getcwd", &_5);
+	zephir_read_static_property_ce(&_0, pdoracle_pdoconnection_ce, SL("_ociParse") TSRMLS_CC);
+	ZEPHIR_CALL_FUNCTION(&error, "oci_error", NULL, _0);
 	zephir_check_call_status();
-	ZEPHIR_INIT_VAR(_6);
-	ZEPHIR_CONCAT_SSSVSSVSSVSSVSSVSSS(_6, "<div style='width:100px;'>", "<ul style='background:gray;'>", "<li><h3 style='color:red;'>SQL TEXT</h3> -> ", _0, "</li>", "<li><h3 style='color:red;'>MESSAGE</h3> -> ", _1, "</li>", "<li><h3 style='color:red;'>ORACLE CODE</h3> -> ", _2, "</li>", "<li><h3 style='color:red;'>OFFSET</h3> -> ", _3, "</li>", "<li><h3 style='color:red;'>FILE ERROR</h3> -> ", _4, "</li>", "</ul>", "</div>");
-	zephir_get_strval(pre_message, _6);
-	zephir_update_property_this(this_ptr, SL("message"), pre_message TSRMLS_CC);
-	zephir_array_fetch_string(&_7, ociError, SL("code"), PH_NOISY | PH_READONLY TSRMLS_CC);
-	zephir_update_property_this(this_ptr, SL("code"), _7 TSRMLS_CC);
-	ZEPHIR_CALL_FUNCTION(&_8, "getcwd", &_5);
+	ZEPHIR_CALL_METHOD(&trace, exc, "gettrace",  NULL);
 	zephir_check_call_status();
-	zephir_update_property_this(this_ptr, SL("file"), _8 TSRMLS_CC);
-	ZEPHIR_INIT_ZVAL_NREF(_9);
-	ZVAL_STRING(_9, "", 1);
-	zephir_update_property_this(this_ptr, SL("line"), _9 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(div);
+	ZEPHIR_CONCAT_SSSSSSSSSSSS(div, "<style>", "#iEx{", "background:#F5D0A9;", "width:100%;", "}", ".hEx{", "color:white;font-size:16px;font-weight:bold;", "}", ".pEx{", "color:#FBF8EF;", "}", "</style>");
+	zephir_array_fetch_string(&_1, error, SL("message"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_string(&_2, error, SL("sqltext"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_string(&_3, error, SL("offset"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_long(&_4, trace, 1, PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_string(&_5, _4, SL("file"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_long(&_6, trace, 1, PH_NOISY | PH_READONLY TSRMLS_CC);
+	zephir_array_fetch_string(&_7, _6, SL("function"), PH_NOISY | PH_READONLY TSRMLS_CC);
+	ZEPHIR_INIT_VAR(_8);
+	ZEPHIR_CONCAT_SSVSSVSSVSSVSSVSS(_8, "<div id='iEx'>", "<label class='hEx'> &nbsp; PDOracleException: </label> <span class='pEx'><i>", _1, "</i></span><br>", "<label class='hEx'> &nbsp; Statement: </label><span class='pEx'><i>", _2, "</i></span><br>", "<label class='hEx'> &nbsp; Offset: </label><span class='pEx'><i>", _3, "</i></span><br>", "<label class='hEx'> &nbsp; File: </label><span class='pEx'><i>", _5, "</i></span><br>", "<label class='hEx'> &nbsp; Function: </label><span class='pEx'><i>", _7, "</i></span>", "</div>");
+	zephir_concat_self(&div, _8 TSRMLS_CC);
+	zephir_update_property_this(this_ptr, SL("message"), div TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
 
 }

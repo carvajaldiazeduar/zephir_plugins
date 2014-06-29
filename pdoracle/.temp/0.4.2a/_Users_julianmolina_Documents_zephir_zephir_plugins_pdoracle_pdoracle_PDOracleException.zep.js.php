@@ -31,69 +31,6 @@
     'extends' => '\\Exception',
     'definition' => 
     array (
-      'properties' => 
-      array (
-        0 => 
-        array (
-          'visibility' => 
-          array (
-            0 => 'private',
-          ),
-          'type' => 'property',
-          'name' => 'message',
-          'docblock' => '**
-     *
-     *',
-          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-          'line' => 21,
-          'char' => 6,
-        ),
-        1 => 
-        array (
-          'visibility' => 
-          array (
-            0 => 'private',
-          ),
-          'type' => 'property',
-          'name' => 'code',
-          'docblock' => '**
-     *
-     *',
-          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-          'line' => 26,
-          'char' => 6,
-        ),
-        2 => 
-        array (
-          'visibility' => 
-          array (
-            0 => 'private',
-          ),
-          'type' => 'property',
-          'name' => 'filen',
-          'docblock' => '**
-     *
-     *',
-          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-          'line' => 31,
-          'char' => 6,
-        ),
-        3 => 
-        array (
-          'visibility' => 
-          array (
-            0 => 'private',
-          ),
-          'type' => 'property',
-          'name' => 'line',
-          'docblock' => '**
-     *
-     *',
-          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-          'line' => 36,
-          'char' => 6,
-        ),
-      ),
       'methods' => 
       array (
         0 => 
@@ -114,14 +51,28 @@
               array (
                 0 => 
                 array (
-                  'variable' => 'ociError',
+                  'variable' => 'exc',
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                  'line' => 39,
-                  'char' => 21,
+                  'line' => 19,
+                  'char' => 16,
+                ),
+                1 => 
+                array (
+                  'variable' => 'trace',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                  'line' => 19,
+                  'char' => 23,
+                ),
+                2 => 
+                array (
+                  'variable' => 'error',
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                  'line' => 19,
+                  'char' => 30,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-              'line' => 40,
+              'line' => 20,
               'char' => 14,
             ),
             1 => 
@@ -132,14 +83,14 @@
               array (
                 0 => 
                 array (
-                  'variable' => 'pre_message',
+                  'variable' => 'div',
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                  'line' => 40,
-                  'char' => 27,
+                  'line' => 20,
+                  'char' => 19,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-              'line' => 42,
+              'line' => 22,
               'char' => 11,
             ),
             2 => 
@@ -151,23 +102,23 @@
                 array (
                   'assign-type' => 'variable',
                   'operator' => 'assign',
-                  'variable' => 'ociError',
+                  'variable' => 'exc',
                   'expr' => 
                   array (
-                    'type' => 'fcall',
-                    'name' => 'oci_error',
-                    'call-type' => 1,
+                    'type' => 'new',
+                    'class' => '\\Exception',
+                    'dynamic' => 0,
                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                    'line' => 42,
+                    'line' => 22,
                     'char' => 35,
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                  'line' => 42,
+                  'line' => 22,
                   'char' => 35,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-              'line' => 43,
+              'line' => 23,
               'char' => 11,
             ),
             3 => 
@@ -179,7 +130,295 @@
                 array (
                   'assign-type' => 'variable',
                   'operator' => 'assign',
-                  'variable' => 'pre_message',
+                  'variable' => 'error',
+                  'expr' => 
+                  array (
+                    'type' => 'fcall',
+                    'name' => 'oci_error',
+                    'call-type' => 1,
+                    'parameters' => 
+                    array (
+                      0 => 
+                      array (
+                        'parameter' => 
+                        array (
+                          'type' => 'static-property-access',
+                          'left' => 
+                          array (
+                            'type' => 'variable',
+                            'value' => 'PDOConnection',
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                            'line' => 23,
+                            'char' => 55,
+                          ),
+                          'right' => 
+                          array (
+                            'type' => 'variable',
+                            'value' => '_ociParse',
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                            'line' => 23,
+                            'char' => 55,
+                          ),
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                          'line' => 23,
+                          'char' => 55,
+                        ),
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                        'line' => 23,
+                        'char' => 55,
+                      ),
+                    ),
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                    'line' => 23,
+                    'char' => 56,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                  'line' => 23,
+                  'char' => 56,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+              'line' => 24,
+              'char' => 11,
+            ),
+            4 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'variable',
+                  'operator' => 'assign',
+                  'variable' => 'trace',
+                  'expr' => 
+                  array (
+                    'type' => 'mcall',
+                    'variable' => 
+                    array (
+                      'type' => 'variable',
+                      'value' => 'exc',
+                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                      'line' => 24,
+                      'char' => 25,
+                    ),
+                    'name' => 'getTrace',
+                    'call-type' => 1,
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                    'line' => 24,
+                    'char' => 36,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                  'line' => 24,
+                  'char' => 36,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+              'line' => 26,
+              'char' => 11,
+            ),
+            5 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'variable',
+                  'operator' => 'assign',
+                  'variable' => 'div',
+                  'expr' => 
+                  array (
+                    'type' => 'concat',
+                    'left' => 
+                    array (
+                      'type' => 'concat',
+                      'left' => 
+                      array (
+                        'type' => 'concat',
+                        'left' => 
+                        array (
+                          'type' => 'concat',
+                          'left' => 
+                          array (
+                            'type' => 'concat',
+                            'left' => 
+                            array (
+                              'type' => 'concat',
+                              'left' => 
+                              array (
+                                'type' => 'concat',
+                                'left' => 
+                                array (
+                                  'type' => 'concat',
+                                  'left' => 
+                                  array (
+                                    'type' => 'concat',
+                                    'left' => 
+                                    array (
+                                      'type' => 'concat',
+                                      'left' => 
+                                      array (
+                                        'type' => 'concat',
+                                        'left' => 
+                                        array (
+                                          'type' => 'string',
+                                          'value' => '<style>',
+                                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                          'line' => 26,
+                                          'char' => 28,
+                                        ),
+                                        'right' => 
+                                        array (
+                                          'type' => 'string',
+                                          'value' => '#iEx{',
+                                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                          'line' => 27,
+                                          'char' => 32,
+                                        ),
+                                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                        'line' => 27,
+                                        'char' => 32,
+                                      ),
+                                      'right' => 
+                                      array (
+                                        'type' => 'string',
+                                        'value' => 'background:#F5D0A9;',
+                                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                        'line' => 28,
+                                        'char' => 50,
+                                      ),
+                                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                      'line' => 28,
+                                      'char' => 50,
+                                    ),
+                                    'right' => 
+                                    array (
+                                      'type' => 'string',
+                                      'value' => 'width:100%;',
+                                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                      'line' => 29,
+                                      'char' => 42,
+                                    ),
+                                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                    'line' => 29,
+                                    'char' => 42,
+                                  ),
+                                  'right' => 
+                                  array (
+                                    'type' => 'string',
+                                    'value' => '}',
+                                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                    'line' => 30,
+                                    'char' => 28,
+                                  ),
+                                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                  'line' => 30,
+                                  'char' => 28,
+                                ),
+                                'right' => 
+                                array (
+                                  'type' => 'string',
+                                  'value' => '.hEx{',
+                                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                  'line' => 32,
+                                  'char' => 32,
+                                ),
+                                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                'line' => 32,
+                                'char' => 32,
+                              ),
+                              'right' => 
+                              array (
+                                'type' => 'string',
+                                'value' => 'color:white;font-size:16px;font-weight:bold;',
+                                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                'line' => 33,
+                                'char' => 75,
+                              ),
+                              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                              'line' => 33,
+                              'char' => 75,
+                            ),
+                            'right' => 
+                            array (
+                              'type' => 'string',
+                              'value' => '}',
+                              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                              'line' => 34,
+                              'char' => 28,
+                            ),
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                            'line' => 34,
+                            'char' => 28,
+                          ),
+                          'right' => 
+                          array (
+                            'type' => 'string',
+                            'value' => '.pEx{',
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                            'line' => 36,
+                            'char' => 32,
+                          ),
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                          'line' => 36,
+                          'char' => 32,
+                        ),
+                        'right' => 
+                        array (
+                          'type' => 'string',
+                          'value' => 'color:#FBF8EF;',
+                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                          'line' => 37,
+                          'char' => 45,
+                        ),
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                        'line' => 37,
+                        'char' => 45,
+                      ),
+                      'right' => 
+                      array (
+                        'type' => 'string',
+                        'value' => '}',
+                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                        'line' => 38,
+                        'char' => 28,
+                      ),
+                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                      'line' => 38,
+                      'char' => 28,
+                    ),
+                    'right' => 
+                    array (
+                      'type' => 'string',
+                      'value' => '</style>',
+                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                      'line' => 39,
+                      'char' => 30,
+                    ),
+                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                    'line' => 39,
+                    'char' => 30,
+                  ),
+                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                  'line' => 39,
+                  'char' => 30,
+                ),
+              ),
+              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+              'line' => 41,
+              'char' => 11,
+            ),
+            6 => 
+            array (
+              'type' => 'let',
+              'assignments' => 
+              array (
+                0 => 
+                array (
+                  'assign-type' => 'variable',
+                  'operator' => 'concat-assign',
+                  'variable' => 'div',
                   'expr' => 
                   array (
                     'type' => 'concat',
@@ -230,305 +469,319 @@
                                                   'type' => 'concat',
                                                   'left' => 
                                                   array (
-                                                    'type' => 'concat',
-                                                    'left' => 
-                                                    array (
-                                                      'type' => 'concat',
-                                                      'left' => 
-                                                      array (
-                                                        'type' => 'string',
-                                                        'value' => '<div style=\'width:100px;\'>',
-                                                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                        'line' => 43,
-                                                        'char' => 55,
-                                                      ),
-                                                      'right' => 
-                                                      array (
-                                                        'type' => 'string',
-                                                        'value' => '<ul style=\'background:gray;\'>',
-                                                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                        'line' => 44,
-                                                        'char' => 64,
-                                                      ),
-                                                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                      'line' => 44,
-                                                      'char' => 64,
-                                                    ),
-                                                    'right' => 
-                                                    array (
-                                                      'type' => 'string',
-                                                      'value' => '<li><h3 style=\'color:red;\'>SQL TEXT</h3> -> ',
-                                                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                      'line' => 45,
-                                                      'char' => 83,
-                                                    ),
+                                                    'type' => 'string',
+                                                    'value' => '<div id=\'iEx\'>',
                                                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                    'line' => 45,
-                                                    'char' => 83,
+                                                    'line' => 41,
+                                                    'char' => 35,
                                                   ),
                                                   'right' => 
                                                   array (
-                                                    'type' => 'array-access',
-                                                    'left' => 
-                                                    array (
-                                                      'type' => 'variable',
-                                                      'value' => 'ociError',
-                                                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                      'line' => 45,
-                                                      'char' => 92,
-                                                    ),
-                                                    'right' => 
-                                                    array (
-                                                      'type' => 'string',
-                                                      'value' => 'sqltext',
-                                                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                      'line' => 45,
-                                                      'char' => 102,
-                                                    ),
+                                                    'type' => 'string',
+                                                    'value' => '<label class=\'hEx\'> &nbsp; PDOracleException: </label> <span class=\'pEx\'><i>',
                                                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                    'line' => 45,
+                                                    'line' => 42,
                                                     'char' => 103,
                                                   ),
                                                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                  'line' => 45,
+                                                  'line' => 42,
                                                   'char' => 103,
                                                 ),
                                                 'right' => 
                                                 array (
-                                                  'type' => 'string',
-                                                  'value' => '</li>',
+                                                  'type' => 'array-access',
+                                                  'left' => 
+                                                  array (
+                                                    'type' => 'variable',
+                                                    'value' => 'error',
+                                                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                                    'line' => 42,
+                                                    'char' => 109,
+                                                  ),
+                                                  'right' => 
+                                                  array (
+                                                    'type' => 'string',
+                                                    'value' => 'message',
+                                                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                                    'line' => 42,
+                                                    'char' => 119,
+                                                  ),
                                                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                  'line' => 45,
-                                                  'char' => 111,
+                                                  'line' => 42,
+                                                  'char' => 120,
                                                 ),
                                                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                'line' => 45,
-                                                'char' => 111,
+                                                'line' => 42,
+                                                'char' => 120,
                                               ),
                                               'right' => 
                                               array (
                                                 'type' => 'string',
-                                                'value' => '<li><h3 style=\'color:red;\'>MESSAGE</h3> -> ',
+                                                'value' => '</i></span><br>',
                                                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                'line' => 46,
-                                                'char' => 82,
+                                                'line' => 42,
+                                                'char' => 138,
                                               ),
                                               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                              'line' => 46,
-                                              'char' => 82,
+                                              'line' => 42,
+                                              'char' => 138,
                                             ),
                                             'right' => 
                                             array (
-                                              'type' => 'array-access',
-                                              'left' => 
-                                              array (
-                                                'type' => 'variable',
-                                                'value' => 'ociError',
-                                                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                'line' => 46,
-                                                'char' => 91,
-                                              ),
-                                              'right' => 
-                                              array (
-                                                'type' => 'string',
-                                                'value' => 'message',
-                                                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                                'line' => 46,
-                                                'char' => 101,
-                                              ),
+                                              'type' => 'string',
+                                              'value' => '<label class=\'hEx\'> &nbsp; Statement: </label><span class=\'pEx\'><i>',
                                               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                              'line' => 46,
-                                              'char' => 102,
+                                              'line' => 43,
+                                              'char' => 94,
                                             ),
                                             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                            'line' => 46,
-                                            'char' => 102,
+                                            'line' => 43,
+                                            'char' => 94,
                                           ),
                                           'right' => 
                                           array (
-                                            'type' => 'string',
-                                            'value' => '</li>',
+                                            'type' => 'array-access',
+                                            'left' => 
+                                            array (
+                                              'type' => 'variable',
+                                              'value' => 'error',
+                                              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                              'line' => 43,
+                                              'char' => 100,
+                                            ),
+                                            'right' => 
+                                            array (
+                                              'type' => 'string',
+                                              'value' => 'sqltext',
+                                              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                              'line' => 43,
+                                              'char' => 110,
+                                            ),
                                             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                            'line' => 46,
-                                            'char' => 110,
+                                            'line' => 43,
+                                            'char' => 111,
                                           ),
                                           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                          'line' => 46,
-                                          'char' => 110,
+                                          'line' => 43,
+                                          'char' => 111,
                                         ),
                                         'right' => 
                                         array (
                                           'type' => 'string',
-                                          'value' => '<li><h3 style=\'color:red;\'>ORACLE CODE</h3> -> ',
+                                          'value' => '</i></span><br>',
                                           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                          'line' => 47,
-                                          'char' => 86,
+                                          'line' => 43,
+                                          'char' => 129,
                                         ),
                                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                        'line' => 47,
-                                        'char' => 86,
+                                        'line' => 43,
+                                        'char' => 129,
                                       ),
                                       'right' => 
                                       array (
-                                        'type' => 'array-access',
-                                        'left' => 
-                                        array (
-                                          'type' => 'variable',
-                                          'value' => 'ociError',
-                                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                          'line' => 47,
-                                          'char' => 95,
-                                        ),
-                                        'right' => 
-                                        array (
-                                          'type' => 'string',
-                                          'value' => 'code',
-                                          'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                          'line' => 47,
-                                          'char' => 102,
-                                        ),
+                                        'type' => 'string',
+                                        'value' => '<label class=\'hEx\'> &nbsp; Offset: </label><span class=\'pEx\'><i>',
                                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                        'line' => 47,
-                                        'char' => 103,
+                                        'line' => 44,
+                                        'char' => 91,
                                       ),
                                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                      'line' => 47,
-                                      'char' => 103,
+                                      'line' => 44,
+                                      'char' => 91,
                                     ),
                                     'right' => 
                                     array (
-                                      'type' => 'string',
-                                      'value' => '</li>',
+                                      'type' => 'array-access',
+                                      'left' => 
+                                      array (
+                                        'type' => 'variable',
+                                        'value' => 'error',
+                                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                        'line' => 44,
+                                        'char' => 97,
+                                      ),
+                                      'right' => 
+                                      array (
+                                        'type' => 'string',
+                                        'value' => 'offset',
+                                        'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                        'line' => 44,
+                                        'char' => 106,
+                                      ),
                                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                      'line' => 47,
-                                      'char' => 111,
+                                      'line' => 44,
+                                      'char' => 107,
                                     ),
                                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                    'line' => 47,
-                                    'char' => 111,
+                                    'line' => 44,
+                                    'char' => 107,
                                   ),
                                   'right' => 
                                   array (
                                     'type' => 'string',
-                                    'value' => '<li><h3 style=\'color:red;\'>OFFSET</h3> -> ',
+                                    'value' => '</i></span><br>',
                                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                    'line' => 48,
-                                    'char' => 81,
+                                    'line' => 44,
+                                    'char' => 125,
                                   ),
                                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                  'line' => 48,
-                                  'char' => 81,
+                                  'line' => 44,
+                                  'char' => 125,
                                 ),
                                 'right' => 
+                                array (
+                                  'type' => 'string',
+                                  'value' => '<label class=\'hEx\'> &nbsp; File: </label><span class=\'pEx\'><i>',
+                                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                  'line' => 45,
+                                  'char' => 89,
+                                ),
+                                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                'line' => 45,
+                                'char' => 89,
+                              ),
+                              'right' => 
+                              array (
+                                'type' => 'array-access',
+                                'left' => 
                                 array (
                                   'type' => 'array-access',
                                   'left' => 
                                   array (
                                     'type' => 'variable',
-                                    'value' => 'ociError',
+                                    'value' => 'trace',
                                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                    'line' => 48,
-                                    'char' => 90,
+                                    'line' => 45,
+                                    'char' => 95,
                                   ),
                                   'right' => 
                                   array (
-                                    'type' => 'string',
-                                    'value' => 'offset',
+                                    'type' => 'int',
+                                    'value' => '1',
                                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                    'line' => 48,
-                                    'char' => 99,
+                                    'line' => 45,
+                                    'char' => 97,
                                   ),
                                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                  'line' => 48,
-                                  'char' => 100,
+                                  'line' => 45,
+                                  'char' => 98,
+                                ),
+                                'right' => 
+                                array (
+                                  'type' => 'string',
+                                  'value' => 'file',
+                                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                                  'line' => 45,
+                                  'char' => 105,
                                 ),
                                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                'line' => 48,
-                                'char' => 100,
-                              ),
-                              'right' => 
-                              array (
-                                'type' => 'string',
-                                'value' => '</li>',
-                                'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                                'line' => 48,
-                                'char' => 108,
+                                'line' => 45,
+                                'char' => 106,
                               ),
                               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                              'line' => 48,
-                              'char' => 108,
+                              'line' => 45,
+                              'char' => 106,
                             ),
                             'right' => 
                             array (
                               'type' => 'string',
-                              'value' => '<li><h3 style=\'color:red;\'>FILE ERROR</h3> -> ',
+                              'value' => '</i></span><br>',
                               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                              'line' => 49,
-                              'char' => 85,
+                              'line' => 45,
+                              'char' => 124,
                             ),
                             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                            'line' => 49,
-                            'char' => 85,
+                            'line' => 45,
+                            'char' => 124,
                           ),
                           'right' => 
                           array (
-                            'type' => 'fcall',
-                            'name' => 'getcwd',
-                            'call-type' => 1,
+                            'type' => 'string',
+                            'value' => '<label class=\'hEx\'> &nbsp; Function: </label><span class=\'pEx\'><i>',
                             'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                            'line' => 49,
-                            'char' => 94,
+                            'line' => 46,
+                            'char' => 93,
                           ),
                           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                          'line' => 49,
-                          'char' => 94,
+                          'line' => 46,
+                          'char' => 93,
                         ),
                         'right' => 
                         array (
-                          'type' => 'string',
-                          'value' => '</li>',
+                          'type' => 'array-access',
+                          'left' => 
+                          array (
+                            'type' => 'array-access',
+                            'left' => 
+                            array (
+                              'type' => 'variable',
+                              'value' => 'trace',
+                              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                              'line' => 46,
+                              'char' => 99,
+                            ),
+                            'right' => 
+                            array (
+                              'type' => 'int',
+                              'value' => '1',
+                              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                              'line' => 46,
+                              'char' => 101,
+                            ),
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                            'line' => 46,
+                            'char' => 102,
+                          ),
+                          'right' => 
+                          array (
+                            'type' => 'string',
+                            'value' => 'function',
+                            'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
+                            'line' => 46,
+                            'char' => 113,
+                          ),
                           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                          'line' => 49,
-                          'char' => 102,
+                          'line' => 46,
+                          'char' => 114,
                         ),
                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                        'line' => 49,
-                        'char' => 102,
+                        'line' => 46,
+                        'char' => 114,
                       ),
                       'right' => 
                       array (
                         'type' => 'string',
-                        'value' => '</ul>',
+                        'value' => '</i></span>',
                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                        'line' => 50,
-                        'char' => 40,
+                        'line' => 46,
+                        'char' => 128,
                       ),
                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                      'line' => 50,
-                      'char' => 40,
+                      'line' => 46,
+                      'char' => 128,
                     ),
                     'right' => 
                     array (
                       'type' => 'string',
                       'value' => '</div>',
                       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                      'line' => 51,
-                      'char' => 36,
+                      'line' => 47,
+                      'char' => 28,
                     ),
                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                    'line' => 51,
-                    'char' => 36,
+                    'line' => 47,
+                    'char' => 28,
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                  'line' => 51,
-                  'char' => 36,
+                  'line' => 47,
+                  'char' => 28,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-              'line' => 53,
+              'line' => 49,
               'char' => 11,
             ),
-            4 => 
+            7 => 
             array (
               'type' => 'let',
               'assignments' => 
@@ -542,118 +795,18 @@
                   'expr' => 
                   array (
                     'type' => 'variable',
-                    'value' => 'pre_message',
+                    'value' => 'div',
                     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                    'line' => 53,
-                    'char' => 40,
+                    'line' => 49,
+                    'char' => 32,
                   ),
                   'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                  'line' => 53,
-                  'char' => 40,
+                  'line' => 49,
+                  'char' => 32,
                 ),
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-              'line' => 55,
-              'char' => 11,
-            ),
-            5 => 
-            array (
-              'type' => 'let',
-              'assignments' => 
-              array (
-                0 => 
-                array (
-                  'assign-type' => 'object-property',
-                  'operator' => 'assign',
-                  'variable' => 'this',
-                  'property' => 'code',
-                  'expr' => 
-                  array (
-                    'type' => 'array-access',
-                    'left' => 
-                    array (
-                      'type' => 'variable',
-                      'value' => 'ociError',
-                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                      'line' => 55,
-                      'char' => 34,
-                    ),
-                    'right' => 
-                    array (
-                      'type' => 'string',
-                      'value' => 'code',
-                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                      'line' => 55,
-                      'char' => 41,
-                    ),
-                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                    'line' => 55,
-                    'char' => 42,
-                  ),
-                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                  'line' => 55,
-                  'char' => 42,
-                ),
-              ),
-              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-              'line' => 56,
-              'char' => 11,
-            ),
-            6 => 
-            array (
-              'type' => 'let',
-              'assignments' => 
-              array (
-                0 => 
-                array (
-                  'assign-type' => 'object-property',
-                  'operator' => 'assign',
-                  'variable' => 'this',
-                  'property' => 'file',
-                  'expr' => 
-                  array (
-                    'type' => 'fcall',
-                    'name' => 'getcwd',
-                    'call-type' => 1,
-                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                    'line' => 56,
-                    'char' => 34,
-                  ),
-                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                  'line' => 56,
-                  'char' => 34,
-                ),
-              ),
-              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-              'line' => 57,
-              'char' => 11,
-            ),
-            7 => 
-            array (
-              'type' => 'let',
-              'assignments' => 
-              array (
-                0 => 
-                array (
-                  'assign-type' => 'object-property',
-                  'operator' => 'assign',
-                  'variable' => 'this',
-                  'property' => 'line',
-                  'expr' => 
-                  array (
-                    'type' => 'string',
-                    'value' => '',
-                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                    'line' => 57,
-                    'char' => 28,
-                  ),
-                  'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-                  'line' => 57,
-                  'char' => 28,
-                ),
-              ),
-              'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-              'line' => 58,
+              'line' => 51,
               'char' => 5,
             ),
           ),
@@ -661,16 +814,16 @@
      *
      *',
           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-          'line' => 60,
+          'line' => 52,
           'char' => 1,
         ),
       ),
       'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-      'line' => 60,
+      'line' => 52,
       'char' => 1,
     ),
     'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
-    'line' => 61,
+    'line' => 53,
     'char' => 0,
   ),
 );

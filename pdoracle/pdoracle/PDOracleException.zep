@@ -9,52 +9,44 @@ namespace Pdoracle;
  * @copyright
  * @licence
  */
-class PDOracleException extends \Exception{
-
-    /**
-     *
-     */
-    private message;
-
-    /**
-     *
-     */
-    private code;
-
-    /**
-     *
-     */
-    private filen;
-
-    /**
-     *
-     */
-    private line;
+class PDOracleException extends \Exception {
 
     /**
      *
      */
     public function __construct() {
 
-        var ociError;
-        string pre_message;
+        var exc, trace, error;
+        string div;
 
-        let ociError = oci_error();
-        let pre_message = "<div style='width:100px;'>".
-                                "<ul style='background:gray;'>".
-                                    "<li><h3 style='color:red;'>SQL TEXT</h3> -> ".ociError["sqltext"]."</li>".
-                                    "<li><h3 style='color:red;'>MESSAGE</h3> -> ".ociError["message"]."</li>".
-                                    "<li><h3 style='color:red;'>ORACLE CODE</h3> -> ".ociError["code"]."</li>".
-                                    "<li><h3 style='color:red;'>OFFSET</h3> -> ".ociError["offset"]."</li>".
-                                    "<li><h3 style='color:red;'>FILE ERROR</h3> -> ".getcwd()."</li>".
-                                "</ul>".
-                           "</div>";
+        let exc = new \Exception();
+        let error = oci_error(PDOConnection::_ociParse);
+        let trace = exc->getTrace();
 
-        let this->message = pre_message;
+        let div = "<style>".
+                        "#iEx{".
+                            "background:#F5D0A9;".
+                            "width:100%;".
+                        "}".
 
-        let this->code = ociError["code"];
-        let this->file = getcwd();
-        let this->line = "";
+                        ".hEx{".
+                            "color:white;font-size:16px;font-weight:bold;".
+                        "}".
+
+                        ".pEx{".
+                            "color:#FBF8EF;".
+                        "}".
+                   "</style>";
+
+        let div .= "<div id='iEx'>".
+                        "<label class='hEx'> &nbsp; PDOracleException: </label> <span class='pEx'><i>".error["message"]."</i></span><br>".
+                        "<label class='hEx'> &nbsp; Statement: </label><span class='pEx'><i>".error["sqltext"]."</i></span><br>".
+                        "<label class='hEx'> &nbsp; Offset: </label><span class='pEx'><i>".error["offset"]."</i></span><br>".
+                        "<label class='hEx'> &nbsp; File: </label><span class='pEx'><i>".trace[1]["file"]."</i></span><br>".
+                        "<label class='hEx'> &nbsp; Function: </label><span class='pEx'><i>".trace[1]["function"]."</i></span>".
+                   "</div>";
+
+        let this->message = div;
+
     }
-
 }

@@ -54,6 +54,11 @@ ZEPHIR_INIT_CLASS(Pdoracle_PDOConnection) {
 	 */
 	zend_declare_property_null(pdoracle_pdoconnection_ce, SL("_instance"), ZEND_ACC_PRIVATE|ZEND_ACC_STATIC TSRMLS_CC);
 
+	/**
+	 *
+	 */
+	zend_declare_property_null(pdoracle_pdoconnection_ce, SL("_ociParse"), ZEND_ACC_PUBLIC|ZEND_ACC_STATIC TSRMLS_CC);
+
 	return SUCCESS;
 
 }
@@ -124,7 +129,7 @@ PHP_METHOD(Pdoracle_PDOConnection, getInstance) {
 			zephir_update_static_property_ce(pdoracle_pdoconnection_ce, SL("_instance"), _3 TSRMLS_CC);
 			_0 = zephir_fetch_static_property_ce(pdoracle_pdoconnection_ce, SL("_instance") TSRMLS_CC);
 			if (Z_TYPE_P(_0) == IS_NULL) {
-				ZEPHIR_THROW_EXCEPTION_DEBUG_STR(pdoracle_pdoracleexception_ce, "Connection error:", "pdoracle/PDOConnection.zep", 53);
+				ZEPHIR_THROW_EXCEPTION_DEBUG_STR(pdoracle_pdoracleexception_ce, "Connection error:", "pdoracle/PDOConnection.zep", 58);
 				return;
 			}
 		}
@@ -137,7 +142,7 @@ PHP_METHOD(Pdoracle_PDOConnection, getInstance) {
 PHP_METHOD(Pdoracle_PDOConnection, __clone) {
 
 
-	ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(zend_exception_get_default(TSRMLS_C), "This instance do not allow clone objects.", "pdoracle/PDOConnection.zep", 61);
+	ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(zend_exception_get_default(TSRMLS_C), "This instance do not allow clone objects.", "pdoracle/PDOConnection.zep", 66);
 	return;
 
 }

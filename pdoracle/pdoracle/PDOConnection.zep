@@ -35,6 +35,11 @@ final class PDOConnection {
     private static _instance;
 
     /**
+     *
+     */
+    public static _ociParse;
+
+    /**
      * Singleton Pattern connection PDOracle.
      * @return oci_connect Instance
      */

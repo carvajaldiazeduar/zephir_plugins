@@ -95,7 +95,7 @@ class PDOClass {
         if !oci_execute(ociParse) {
             throw new PDOracleException();
         }
-        return oci_fetch_array(ociParse);
+        return ociParse;
     }
 
     /**

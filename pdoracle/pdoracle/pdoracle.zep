@@ -57,7 +57,6 @@ class PDOracle extends PDOConnection {
         var pdoracleStatement;
         let pdoracleStatement = new PDOracleStatement();
         let pdoracleStatement->_queryString = statement;
-
         return pdoracleStatement;
     }
 
@@ -69,9 +68,12 @@ class PDOracle extends PDOConnection {
      */
     public function query (string statement) {
 
-        //var engine;
-        //let engine = new PDOClass();
-        //return engine->executeQuery(statement);
+        var engine, pdoracleStatement;
+        let engine = new PDOClass();
+        let pdoracleStatement = new PDOracleStatement();
+
+        let pdoracleStatement->_ociParse = engine->executeQuery(statement);
+        return pdoracleStatement;
 
     }
 

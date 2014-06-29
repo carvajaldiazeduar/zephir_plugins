@@ -1065,29 +1065,11 @@
               'type' => 'return',
               'expr' => 
               array (
-                'type' => 'fcall',
-                'name' => 'oci_fetch_array',
-                'call-type' => 1,
-                'parameters' => 
-                array (
-                  0 => 
-                  array (
-                    'parameter' => 
-                    array (
-                      'type' => 'variable',
-                      'value' => 'ociParse',
-                      'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOClass.zep',
-                      'line' => 98,
-                      'char' => 40,
-                    ),
-                    'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOClass.zep',
-                    'line' => 98,
-                    'char' => 40,
-                  ),
-                ),
+                'type' => 'variable',
+                'value' => 'ociParse',
                 'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOClass.zep',
                 'line' => 98,
-                'char' => 41,
+                'char' => 24,
               ),
               'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOClass.zep',
               'line' => 99,
