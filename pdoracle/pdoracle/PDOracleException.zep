@@ -25,7 +25,7 @@ class PDOracleException extends \Exception {
 
         let div = "<style>".
                         "#iEx{".
-                            "background:#F5D0A9;".
+                            "background:red;".
                             "width:100%;".
                             "height:98px;".
                         "}".

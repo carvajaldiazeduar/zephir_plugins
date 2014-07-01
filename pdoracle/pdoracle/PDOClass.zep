@@ -15,20 +15,9 @@ class PDOClass {
     protected _runTransaction;
 
     /**
-     * oci8 parse var
-     * @type oci8 Resource
-     */
-    private _ociParse{get};
-
-    /**
      * Set options values such as commit or transactions.
      */
     private _options{set};
-
-    /**
-     *
-     */
-    private _connection;
 
     /**
      * Initialize contruct and connection.
@@ -55,7 +44,6 @@ class PDOClass {
         string bindParam;
         char charField;
         var paramValue;
-        var ociParse;
         int i = 0;
         int j = 0;
 
@@ -76,39 +64,36 @@ class PDOClass {
         }
 
 
-        let ociParse = oci_parse(PDOConnection::getInstance(), queryBindConstruct);
+        let PDOConnection::_ociParse = oci_parse(PDOConnection::getInstance(), queryBindConstruct);
 
         for charField in query {
             if charField == '?' {
 
                 let bindParam = ":param".j;
                 let paramValue = this->_escapeString(params[j]);
-                oci_bind_by_name(ociParse, bindParam, paramValue);
+                oci_bind_by_name(PDOConnection::_ociParse, bindParam, paramValue);
                 let j++;
 
             }
         }
-        return ociParse;
+        return PDOConnection::_ociParse;
     }
 
     /**
      *
      */
     public function executeQuery(string statement){
-        var ociParse;
-        let ociParse = oci_parse(PDOConnection::getInstance(), statement);
+        let PDOConnection::_ociParse = oci_parse(PDOConnection::getInstance(), statement);
         if isset(this->_options["transaction"]) && this->_options["transaction"] == true {
-            if !oci_execute(ociParse, OCI_NO_AUTO_COMMIT) {
-                let PDOConnection::_ociParse = ociParse;
+            if !oci_execute(PDOConnection::_ociParse, OCI_NO_AUTO_COMMIT) {
                 throw new PDOracleException();
             }
         }else{
-            if !oci_execute(ociParse) {
-                let PDOConnection::_ociParse = ociParse;
+            if !oci_execute(PDOConnection::_ociParse) {
                 throw new PDOracleException();
             }
         }
-        return ociParse;
+        return PDOConnection::_ociParse;
     }
 
     /**

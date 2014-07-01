@@ -69,12 +69,11 @@ class PDOracle extends PDOConnection {
      */
     public function query (string statement) {
 
-        var engine, pdoracleStatement, ociParse;
-        let engine = new PDOClass();
+        var pdoclass, pdoracleStatement;
+        let pdoclass = new PDOClass();
         let pdoracleStatement = new PDOracleStatement();
         let pdoracleStatement->_options = ["transaction": this->_checkTransaction];
-        let ociParse = engine->executeQuery(statement);
-        let pdoracleStatement->_ociParse = ociParse;
+        pdoclass->executeQuery(statement);
         return pdoracleStatement;
 
     }
@@ -101,7 +100,7 @@ class PDOracle extends PDOConnection {
      */
     public function beginTransaction () -> boolean {
         var _return;
-        if this->_checkTransaction {
+        if this->_checkTransaction == true {
             let _return =  false;
         }else{
             let this->_checkTransaction = true;
@@ -124,6 +123,7 @@ class PDOracle extends PDOConnection {
      *
      */
     public function rollBack () -> boolean {
+        let this->_checkTransaction = null;
         return oci_rollback(parent::getInstance());
     }
 

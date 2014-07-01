@@ -58,7 +58,7 @@ PHP_METHOD(Pdoracle_PDOracleException, __construct) {
 	ZEPHIR_CALL_METHOD(&trace, exc, "gettrace",  NULL);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(div);
-	ZEPHIR_CONCAT_SSSSSSSSSSSSS(div, "<style>", "#iEx{", "background:#F5D0A9;", "width:100%;", "height:98px;", "}", ".hEx{", "color:white;font-size:16px;font-weight:bold;", "}", ".pEx{", "color:#FBF8EF;", "}", "</style>");
+	ZEPHIR_CONCAT_SSSSSSSSSSSSS(div, "<style>", "#iEx{", "background:red;", "width:100%;", "height:98px;", "}", ".hEx{", "color:white;font-size:16px;font-weight:bold;", "}", ".pEx{", "color:#FBF8EF;", "}", "</style>");
 	zephir_array_fetch_string(&_1, error, SL("message"), PH_NOISY | PH_READONLY TSRMLS_CC);
 	ZEPHIR_CALL_FUNCTION(&_2, "htmlentities", &_3, _1);
 	zephir_check_call_status();

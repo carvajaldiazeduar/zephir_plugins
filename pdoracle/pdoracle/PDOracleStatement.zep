@@ -4,12 +4,12 @@ namespace Pdoracle;
 /**
  *
  */
-class PDOracleStatement extends PDOClass {
+class PDOracleStatement extends PDOClass implements \IteratorAggregate  {
 
     /**
      * Store simple query inserted for user
      */
-    private _queryString{
+    private _queryString {
         get,
         set
     };
@@ -18,11 +18,6 @@ class PDOracleStatement extends PDOClass {
      *
      */
     private _options = null {set};
-
-    /**
-     * @type oci8 parse resource
-     */
-    private _ociParse{set};
 
     /**
      * Initialize contruct with oci8 connection.
@@ -34,6 +29,18 @@ class PDOracleStatement extends PDOClass {
     }
 
     /**
+     * Allows to read as a class object in a foreach
+     * @see http://www.php.net/manual/en/class.iteratoraggregate.php
+     * @return ArrayIterator object
+     */
+    public function getIterator(){
+        var obj, iterator;
+        let obj = new \ArrayObject(oci_fetch_array(PDOConnection::_ociParse));
+        let iterator = obj->getIterator();
+        return iterator;
+    }
+
+    /**
      * Execute a transaction oci8_parse
      *
      * @see http://www.php.net/manual/en/pdostatement.execute.php
@@ -41,14 +48,14 @@ class PDOracleStatement extends PDOClass {
      * @return BOOLEAN
      */
     public function execute (var inputParameters = "") -> boolean {
+
         var error;
-        let this->_ociParse = null;
-        let this->_ociParse = this->_prepareInterrogation(this->_queryString, inputParameters);
-        let PDOConnection::_ociParse = this->_ociParse;
+
+        let PDOConnection::_ociParse = this->_prepareInterrogation(this->_queryString, inputParameters);
         if isset(this->_options["transaction"]) && this->_options["transaction"] == true {
-            let error = oci_execute(this->_ociParse, OCI_NO_AUTO_COMMIT);
+            let error = oci_execute(PDOConnection::_ociParse, OCI_NO_AUTO_COMMIT);
         }else{
-            let error = oci_execute(this->_ociParse);
+            let error = oci_execute(PDOConnection::_ociParse);
         }
 
         if !error {
@@ -68,7 +75,7 @@ class PDOracleStatement extends PDOClass {
      */
     public function $fetch (int fetchStyle = 0, int cursorOrientation = 0, int cursorOffset = 0) {
         //oci_free_statement(this->_ociParse);
-        return oci_fetch_array(this->_ociParse);
+        return oci_fetch_array(PDOConnection::_ociParse);
     }
 
     /**

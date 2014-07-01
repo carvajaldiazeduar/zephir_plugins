@@ -286,14 +286,14 @@
                                         'right' => 
                                         array (
                                           'type' => 'string',
-                                          'value' => 'background:#F5D0A9;',
+                                          'value' => 'background:red;',
                                           'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
                                           'line' => 28,
-                                          'char' => 50,
+                                          'char' => 46,
                                         ),
                                         'file' => '/Users/julianmolina/Documents/zephir/zephir_plugins/pdoracle/pdoracle/PDOracleException.zep',
                                         'line' => 28,
-                                        'char' => 50,
+                                        'char' => 46,
                                       ),
                                       'right' => 
                                       array (

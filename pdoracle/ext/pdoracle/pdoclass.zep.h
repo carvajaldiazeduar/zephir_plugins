@@ -3,7 +3,6 @@ extern zend_class_entry *pdoracle_pdoclass_ce;
 
 ZEPHIR_INIT_CLASS(Pdoracle_PDOClass);
 
-PHP_METHOD(Pdoracle_PDOClass, getOciParse);
 PHP_METHOD(Pdoracle_PDOClass, setOptions);
 PHP_METHOD(Pdoracle_PDOClass, __construct);
 PHP_METHOD(Pdoracle_PDOClass, _prepareInterrogation);
@@ -34,7 +33,6 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_pdoracle_pdoclass__escapestring, 0, 0, 1)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(pdoracle_pdoclass_method_entry) {
-	PHP_ME(Pdoracle_PDOClass, getOciParse, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOClass, setOptions, arginfo_pdoracle_pdoclass_setoptions, ZEND_ACC_PUBLIC)
 	PHP_ME(Pdoracle_PDOClass, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
 	PHP_ME(Pdoracle_PDOClass, _prepareInterrogation, arginfo_pdoracle_pdoclass__prepareinterrogation, ZEND_ACC_PUBLIC)
